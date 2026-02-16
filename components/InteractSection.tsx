@@ -79,7 +79,7 @@ export default function InteractSection() {
         {/* Interactive text block */}
         <div
           className="mb-24"
-          onMouseEnter={() => setCursorVariant("text", "Read")}
+          onMouseEnter={() => setCursorVariant("text")}
           onMouseLeave={resetCursor}
         >
           <p
