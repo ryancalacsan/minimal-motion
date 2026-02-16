@@ -1,5 +1,7 @@
 "use client";
 
+import { useRef } from "react";
+import { motion, useInView } from "motion/react";
 import MagneticElement from "./MagneticElement";
 import ThemeToggle from "./ThemeToggle";
 import { useCursor } from "@/context/CursorContext";
@@ -20,6 +22,8 @@ const SOCIALS = [
 
 export default function Footer() {
   const { setCursorVariant, resetCursor } = useCursor();
+  const pillsRef = useRef<HTMLDivElement>(null);
+  const pillsInView = useInView(pillsRef, { margin: "-50px", once: true });
 
   return (
     <footer
@@ -47,18 +51,10 @@ export default function Footer() {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="font-[family-name:var(--font-inter)] text-[length:var(--text-fluid-sm)] transition-colors duration-300"
+                  className="footer-social-link font-[family-name:var(--font-inter)] text-[length:var(--text-fluid-sm)] transition-colors duration-300"
                   style={{ color: "var(--color-muted)" }}
-                  onMouseEnter={() => {
-                    setCursorVariant("link");
-                    const el = document.activeElement as HTMLElement;
-                    if (el) el.style.color = "var(--color-text)";
-                  }}
-                  onMouseLeave={(e) => {
-                    resetCursor();
-                    (e.currentTarget as HTMLElement).style.color =
-                      "var(--color-muted)";
-                  }}
+                  onMouseEnter={() => setCursorVariant("link")}
+                  onMouseLeave={resetCursor}
                 >
                   {social.label}
                 </a>
@@ -68,18 +64,29 @@ export default function Footer() {
         </div>
 
         {/* Tech stack pills */}
-        <div className="mt-12 flex flex-wrap gap-2">
-          {TECH_STACK.map((tech) => (
-            <span
+        <div ref={pillsRef} className="mt-12 flex flex-wrap gap-2">
+          {TECH_STACK.map((tech, i) => (
+            <motion.span
               key={tech}
-              className="rounded-full border px-4 py-1.5 font-[family-name:var(--font-inter)] text-[length:var(--text-fluid-xs)]"
+              className="tech-pill rounded-full border px-4 py-1.5 font-[family-name:var(--font-inter)] text-[length:var(--text-fluid-xs)] transition-colors duration-300"
               style={{
                 borderColor: "var(--color-border)",
                 color: "var(--color-muted)",
               }}
+              initial={{ opacity: 0, y: 10 }}
+              animate={
+                pillsInView
+                  ? { opacity: 1, y: 0 }
+                  : { opacity: 0, y: 10 }
+              }
+              transition={{
+                duration: 0.5,
+                delay: i * 0.08,
+                ease: [0.16, 1, 0.3, 1],
+              }}
             >
               {tech}
-            </span>
+            </motion.span>
           ))}
         </div>
 

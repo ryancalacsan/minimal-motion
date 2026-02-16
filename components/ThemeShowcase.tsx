@@ -1,5 +1,7 @@
 "use client";
 
+import { useRef } from "react";
+import { motion, useInView } from "motion/react";
 import TextReveal from "./TextReveal";
 import ThemeToggle from "./ThemeToggle";
 
@@ -12,8 +14,14 @@ const PALETTE = [
 ];
 
 export default function ThemeShowcase() {
+  const paletteRef = useRef<HTMLDivElement>(null);
+  const paletteInView = useInView(paletteRef, {
+    margin: "-50px",
+    once: true,
+  });
+
   return (
-    <section className="px-6 py-32">
+    <section id="shift" className="px-6 py-32">
       <div className="mx-auto max-w-5xl">
         {/* Section label */}
         <h2 className="sr-only">Shift — Theme Showcase</h2>
@@ -25,7 +33,7 @@ export default function ThemeShowcase() {
         />
 
         <TextReveal
-          text="A monochrome palette that breathes. Toggle between light and dark to see every color transition smoothly."
+          text="A monochrome palette that breathes. Switch between light and dark to see every color transition smoothly."
           mode="word"
           className="mb-16 max-w-2xl font-[family-name:var(--font-inter)] text-[length:var(--text-fluid-lg)] leading-relaxed"
           delay={0.2}
@@ -37,14 +45,40 @@ export default function ThemeShowcase() {
         </div>
 
         {/* Color palette display */}
-        <div className="grid grid-cols-2 gap-4 sm:grid-cols-5">
-          {PALETTE.map((color) => (
-            <div key={color.variable} className="flex flex-col gap-2">
-              <div
+        <div
+          ref={paletteRef}
+          className="grid grid-cols-2 gap-4 sm:grid-cols-5"
+        >
+          {PALETTE.map((color, i) => (
+            <motion.div
+              key={color.variable}
+              className="group flex flex-col gap-2"
+              initial={{ opacity: 0, y: 20 }}
+              animate={
+                paletteInView
+                  ? { opacity: 1, y: 0 }
+                  : { opacity: 0, y: 20 }
+              }
+              transition={{
+                duration: 0.6,
+                delay: i * 0.1,
+                ease: [0.16, 1, 0.3, 1],
+              }}
+            >
+              <motion.div
                 className="aspect-square w-full rounded-lg border transition-colors duration-300"
                 style={{
                   backgroundColor: `var(${color.variable})`,
                   borderColor: "var(--color-border)",
+                }}
+                whileHover={{
+                  scale: 1.05,
+                  rotate: 2,
+                }}
+                transition={{
+                  type: "spring",
+                  stiffness: 400,
+                  damping: 25,
                 }}
               />
               <span
@@ -59,7 +93,7 @@ export default function ThemeShowcase() {
               >
                 {color.variable}
               </span>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

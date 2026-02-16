@@ -66,12 +66,15 @@ export default function CustomCursor() {
         style={{ backgroundColor: "var(--color-text)" }}
       />
       {cursorState.text && cursorState.variant === "text" && (
-        <span
-          className="relative z-10 text-xs font-medium"
+        <motion.span
+          className="relative z-10 text-sm font-medium"
           style={{ color: "var(--color-bg)" }}
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.2, delay: 0.1 }}
         >
           {cursorState.text}
-        </span>
+        </motion.span>
       )}
     </motion.div>
   );

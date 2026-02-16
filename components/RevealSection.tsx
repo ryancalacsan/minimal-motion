@@ -4,25 +4,39 @@ import TextReveal from "./TextReveal";
 
 export default function RevealSection() {
   return (
-    <section className="px-6 py-32">
+    <section id="reveal-modes" className="px-6 py-32">
       <div className="mx-auto max-w-5xl">
         {/* Section label */}
         <h2 className="sr-only">Reveal Modes</h2>
         <TextReveal
           text="Reveal Modes"
           mode="letter"
-          className="mb-20 font-[family-name:var(--font-inter)] text-[length:var(--text-fluid-xs)] uppercase tracking-[0.3em]"
+          className="mb-6 font-[family-name:var(--font-inter)] text-[length:var(--text-fluid-xs)] uppercase tracking-[0.3em]"
           aria-hidden
+        />
+        <TextReveal
+          text="Four ways to reveal text on scroll — each with its own character and cadence."
+          mode="word"
+          className="mb-24 max-w-xl font-[family-name:var(--font-inter)] text-[length:var(--text-fluid-sm)] leading-relaxed"
+          delay={0.15}
         />
 
         {/* Word reveal */}
-        <div className="mb-24">
-          <span
-            className="mb-4 block font-[family-name:var(--font-inter)] text-[length:var(--text-fluid-xs)] uppercase tracking-[0.3em]"
-            style={{ color: "var(--color-muted)" }}
-          >
-            Word by word
-          </span>
+        <div className="mb-28">
+          <div className="mb-4 flex items-baseline gap-4">
+            <span
+              className="font-[family-name:var(--font-syne)] text-[length:var(--text-fluid-xs)] font-semibold tabular-nums"
+              style={{ color: "var(--color-border)" }}
+            >
+              01
+            </span>
+            <span
+              className="font-[family-name:var(--font-inter)] text-[length:var(--text-fluid-xs)] uppercase tracking-[0.3em]"
+              style={{ color: "var(--color-muted)" }}
+            >
+              Word by word
+            </span>
+          </div>
           <TextReveal
             text="Words arrive one at a time — measured, unhurried, each one intentional."
             mode="word"
@@ -31,14 +45,22 @@ export default function RevealSection() {
           />
         </div>
 
-        {/* Letter reveal */}
-        <div className="mb-24">
-          <span
-            className="mb-4 block font-[family-name:var(--font-inter)] text-[length:var(--text-fluid-xs)] uppercase tracking-[0.3em]"
-            style={{ color: "var(--color-muted)" }}
-          >
-            Letter by letter
-          </span>
+        {/* Letter reveal — centered for impact */}
+        <div className="mb-28 text-center">
+          <div className="mb-4 flex items-baseline justify-center gap-4">
+            <span
+              className="font-[family-name:var(--font-syne)] text-[length:var(--text-fluid-xs)] font-semibold tabular-nums"
+              style={{ color: "var(--color-border)" }}
+            >
+              02
+            </span>
+            <span
+              className="font-[family-name:var(--font-inter)] text-[length:var(--text-fluid-xs)] uppercase tracking-[0.3em]"
+              style={{ color: "var(--color-muted)" }}
+            >
+              Letter by letter
+            </span>
+          </div>
           <TextReveal
             text="Precision"
             mode="letter"
@@ -46,29 +68,45 @@ export default function RevealSection() {
           />
         </div>
 
-        {/* Line reveal */}
-        <div className="mb-24">
-          <span
-            className="mb-4 block font-[family-name:var(--font-inter)] text-[length:var(--text-fluid-xs)] uppercase tracking-[0.3em]"
-            style={{ color: "var(--color-muted)" }}
-          >
-            Line by line
-          </span>
+        {/* Line reveal — right-aligned for variety */}
+        <div className="mb-28 sm:ml-auto sm:max-w-2xl sm:text-right">
+          <div className="mb-4 flex items-baseline gap-4 sm:justify-end">
+            <span
+              className="font-[family-name:var(--font-syne)] text-[length:var(--text-fluid-xs)] font-semibold tabular-nums"
+              style={{ color: "var(--color-border)" }}
+            >
+              03
+            </span>
+            <span
+              className="font-[family-name:var(--font-inter)] text-[length:var(--text-fluid-xs)] uppercase tracking-[0.3em]"
+              style={{ color: "var(--color-muted)" }}
+            >
+              Line by line
+            </span>
+          </div>
           <TextReveal
-            text={"Design is not just\nwhat it looks like.\nDesign is how\nit works."}
+            text={"Not just\nwhat it looks like.\nHow it works."}
             mode="line"
             className="font-[family-name:var(--font-instrument)] text-[length:var(--text-fluid-xl)] italic leading-relaxed"
           />
         </div>
 
         {/* Mask reveal */}
-        <div className="mb-24">
-          <span
-            className="mb-4 block font-[family-name:var(--font-inter)] text-[length:var(--text-fluid-xs)] uppercase tracking-[0.3em]"
-            style={{ color: "var(--color-muted)" }}
-          >
-            Mask wipe
-          </span>
+        <div className="mb-28">
+          <div className="mb-4 flex items-baseline gap-4">
+            <span
+              className="font-[family-name:var(--font-syne)] text-[length:var(--text-fluid-xs)] font-semibold tabular-nums"
+              style={{ color: "var(--color-border)" }}
+            >
+              04
+            </span>
+            <span
+              className="font-[family-name:var(--font-inter)] text-[length:var(--text-fluid-xs)] uppercase tracking-[0.3em]"
+              style={{ color: "var(--color-muted)" }}
+            >
+              Mask wipe
+            </span>
+          </div>
           <TextReveal
             text="The finest interfaces feel inevitable — every transition considered, every movement with intent."
             mode="mask"

@@ -54,6 +54,7 @@
 
 /* ─── Base Styles ─── */
 html {
+  position: relative;
   background-color: var(--color-bg);
   color: var(--color-text);
   -webkit-font-smoothing: antialiased;
@@ -107,6 +108,17 @@ html.lenis body {
   outline: 2px solid var(--color-text);
   outline-offset: 4px;
   border-radius: 2px;
+}
+
+/* ─── Footer Social Links ─── */
+.footer-social-link:hover {
+  color: var(--color-text) !important;
+}
+
+/* ─── Tech Stack Pills ─── */
+.tech-pill:hover {
+  color: var(--color-text) !important;
+  border-color: var(--color-text) !important;
 }
 
 /* ─── Reduced Motion ─── */

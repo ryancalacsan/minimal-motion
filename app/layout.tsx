@@ -3,6 +3,7 @@ import { ThemeProvider } from "next-themes";
 import { syne, inter, instrumentSerif } from "@/lib/fonts";
 import { CursorProvider } from "@/context/CursorContext";
 import CustomCursor from "@/components/CustomCursor";
+import ScrollNav from "@/components/ScrollNav";
 import SmoothScroll from "@/components/SmoothScroll";
 import "./globals.css";
 
@@ -55,7 +56,18 @@ export default function RootLayout({
       <body>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
           <CursorProvider>
+            <a
+              href="#main-content"
+              className="fixed top-4 left-4 z-[10000] -translate-y-20 rounded-md px-4 py-2 font-[family-name:var(--font-inter)] text-sm font-medium transition-transform focus:translate-y-0"
+              style={{
+                backgroundColor: "var(--color-text)",
+                color: "var(--color-bg)",
+              }}
+            >
+              Skip to content
+            </a>
             <CustomCursor />
+            <ScrollNav />
             <SmoothScroll>{children}</SmoothScroll>
           </CursorProvider>
         </ThemeProvider>

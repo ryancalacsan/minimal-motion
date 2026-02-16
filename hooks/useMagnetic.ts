@@ -12,7 +12,7 @@ interface UseMagneticOptions {
 
 export function useMagnetic({
   strength = 0.3,
-  damping = 15,
+  damping = 20,
   stiffness = 150,
 }: UseMagneticOptions = {}) {
   const ref = useRef<HTMLDivElement>(null);

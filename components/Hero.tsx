@@ -61,6 +61,7 @@ export default function Hero() {
 
   return (
     <section
+      id="hero"
       ref={containerRef}
       className="relative flex min-h-screen items-center justify-center overflow-hidden px-6"
     >
@@ -113,7 +114,7 @@ export default function Hero() {
         </MagneticElement>
 
         <motion.p
-          className="mt-8 font-[family-name:var(--font-instrument)] text-[length:var(--text-fluid-lg)] italic"
+          className="mt-12 font-[family-name:var(--font-instrument)] text-[length:var(--text-fluid-xl)] italic"
           style={{ color: "var(--color-muted)" }}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -123,7 +124,25 @@ export default function Hero() {
             ease: [0.16, 1, 0.3, 1],
           }}
         >
-          where typography meets interaction
+          where{" "}
+          <span
+            className="relative inline-block"
+            style={{ color: "var(--color-text)" }}
+          >
+            typography
+            <motion.span
+              className="absolute -bottom-1 left-0 h-px w-full origin-left"
+              style={{ backgroundColor: "var(--color-text)" }}
+              initial={{ scaleX: 0 }}
+              animate={{ scaleX: 1 }}
+              transition={{
+                delay: 1.8,
+                duration: 0.8,
+                ease: [0.16, 1, 0.3, 1],
+              }}
+            />
+          </span>{" "}
+          meets interaction
         </motion.p>
       </motion.div>
 
