@@ -22,20 +22,24 @@ export default function TypeInMotion() {
     offset: ["start end", "end start"],
   });
 
-  // Scroll-driven font weight: 400 → 800
-  const fontWeight = useTransform(scrollYProgress, [0.2, 0.8], [400, 800]);
-  // Scroll-driven letter spacing
-  const letterSpacing = useTransform(
+  // Scroll-driven font weight: 400 → 800, smoothed with spring
+  const rawWeight = useTransform(scrollYProgress, [0.2, 0.8], [400, 800]);
+  const fontWeight = useSpring(rawWeight, { damping: 40, stiffness: 100 });
+
+  // Scroll-driven letter spacing, also smoothed
+  const rawSpacing = useTransform(
     scrollYProgress,
     [0.2, 0.8],
-    ["-0.02em", "0.08em"]
+    ["-0.02", "0.08"]
   );
+  const smoothSpacing = useSpring(rawSpacing, { damping: 40, stiffness: 100 });
+  const letterSpacing = useTransform(smoothSpacing, (v) => `${v}em`);
 
   // Hover-driven weight
   const mouseX = useMotionValue(0);
   const hoverWeight = useSpring(
     useTransform(mouseX, [0, 1], [400, 800]),
-    { damping: 20, stiffness: 200 }
+    { damping: 30, stiffness: 80 }
   );
 
   const handleHoverMove = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -61,7 +65,7 @@ export default function TypeInMotion() {
 
         {/* Scroll-driven weight */}
         <motion.div
-          className="font-[family-name:var(--font-syne)] text-[length:var(--text-fluid-hero)] leading-[0.9]"
+          className="font-[family-name:var(--font-syne)] text-[length:var(--text-fluid-hero)] leading-[1.1]"
           style={
             prefersReduced
               ? { color: "var(--color-text)", fontWeight: 700 }
@@ -72,7 +76,7 @@ export default function TypeInMotion() {
                 }
           }
         >
-          Weight
+          Fluid
         </motion.div>
 
         <p
@@ -81,7 +85,7 @@ export default function TypeInMotion() {
         >
           Variable fonts respond to scroll position.
           <br />
-          Weight shifts from 400 to 800 as you move through this section.
+          Font weight shifts from 400 to 800 as you move through this section.
         </p>
 
         {/* Hover-driven weight demo */}
@@ -95,11 +99,11 @@ export default function TypeInMotion() {
           <div
             ref={hoverRef}
             onMouseMove={handleHoverMove}
-            className="cursor-crosshair rounded-lg border px-8 py-12 text-center"
+            className="cursor-crosshair overflow-hidden rounded-lg border px-8 py-12 text-center"
             style={{ borderColor: "var(--color-border)" }}
           >
             <motion.span
-              className="font-[family-name:var(--font-syne)] text-[length:var(--text-fluid-3xl)] leading-none"
+              className="inline-block font-[family-name:var(--font-syne)] text-[length:var(--text-fluid-2xl)] leading-none"
               style={
                 prefersReduced
                   ? { color: "var(--color-text)", fontWeight: 600 }

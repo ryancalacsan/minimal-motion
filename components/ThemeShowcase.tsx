@@ -20,7 +20,7 @@ export default function ThemeShowcase() {
         <TextReveal
           text="Shift"
           mode="letter"
-          className="mb-20 font-[family-name:var(--font-syne)] text-[length:var(--text-fluid-hero)] font-bold leading-[0.9]"
+          className="mb-20 font-[family-name:var(--font-syne)] text-[length:var(--text-fluid-hero)] font-bold leading-[1.1]"
           aria-hidden
         />
 

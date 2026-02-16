@@ -21,7 +21,7 @@ export default function TextReveal({
   delay = 0,
 }: TextRevealProps) {
   const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { margin: "-100px", once });
+  const isInView = useInView(ref, { margin: "-15%", once });
   const prefersReduced = useReducedMotion();
 
   if (prefersReduced) {
@@ -50,7 +50,7 @@ export default function TextReveal({
               : { clipPath: "inset(0 100% 0 0)" }
           }
           transition={{
-            duration: 1,
+            duration: 1.2,
             delay,
             ease: [0.16, 1, 0.3, 1],
           }}
@@ -66,14 +66,17 @@ export default function TextReveal({
     return (
       <div ref={ref} aria-label={text} className={className}>
         {lines.map((line, i) => (
-          <div key={i} className="overflow-hidden">
+          <div
+            key={i}
+            style={{ overflow: "clip", overflowClipMargin: "0.25em" }}
+          >
             <motion.div
               aria-hidden="true"
               initial={{ y: "100%" }}
               animate={isInView ? { y: "0%" } : { y: "100%" }}
               transition={{
-                duration: 0.7,
-                delay: delay + i * 0.1,
+                duration: 0.8,
+                delay: delay + i * 0.15,
                 ease: [0.16, 1, 0.3, 1],
               }}
             >
@@ -105,8 +108,8 @@ export default function TextReveal({
                 : { opacity: 0, y: 40, rotateX: -90 }
             }
             transition={{
-              duration: 0.6,
-              delay: delay + i * 0.03,
+              duration: 0.7,
+              delay: delay + i * 0.04,
               ease: [0.16, 1, 0.3, 1],
             }}
             style={{
@@ -126,15 +129,19 @@ export default function TextReveal({
   return (
     <div ref={ref} aria-label={text} className={className}>
       {words.map((word, i) => (
-        <span key={i} className="inline-block overflow-hidden">
+        <span
+          key={i}
+          className="inline-block"
+          style={{ overflow: "clip", overflowClipMargin: "0.25em" }}
+        >
           <motion.span
             aria-hidden="true"
             className="inline-block"
             initial={{ y: "100%" }}
             animate={isInView ? { y: "0%" } : { y: "100%" }}
             transition={{
-              duration: 0.5,
-              delay: delay + i * 0.05,
+              duration: 0.7,
+              delay: delay + i * 0.08,
               ease: [0.16, 1, 0.3, 1],
             }}
           >

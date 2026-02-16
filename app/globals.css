@@ -93,6 +93,15 @@ html.lenis body {
   overflow: hidden;
 }
 
+/* ─── Custom Cursor ─── */
+@media (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  *,
+  *::before,
+  *::after {
+    cursor: none !important;
+  }
+}
+
 /* ─── Focus Styles ─── */
 :focus-visible {
   outline: 2px solid var(--color-text);

@@ -24,7 +24,7 @@ export default function RevealSection() {
             Word by word
           </span>
           <TextReveal
-            text="Every word finds its moment to arrive, building rhythm through deliberate pacing."
+            text="Words arrive one at a time — measured, unhurried, each one intentional."
             mode="word"
             className="font-[family-name:var(--font-syne)] text-[length:var(--text-fluid-2xl)] font-semibold leading-tight"
             delay={0.1}
@@ -42,7 +42,7 @@ export default function RevealSection() {
           <TextReveal
             text="Precision"
             mode="letter"
-            className="font-[family-name:var(--font-syne)] text-[length:var(--text-fluid-hero)] font-bold leading-[0.9]"
+            className="font-[family-name:var(--font-syne)] text-[length:var(--text-fluid-hero)] font-bold leading-[1.1]"
           />
         </div>
 
@@ -70,7 +70,7 @@ export default function RevealSection() {
             Mask wipe
           </span>
           <TextReveal
-            text="Typography is the craft of endowing human language with a durable visual form."
+            text="The finest interfaces feel inevitable — every transition considered, every movement with intent."
             mode="mask"
             className="font-[family-name:var(--font-syne)] text-[length:var(--text-fluid-xl)] font-medium leading-snug"
           />
