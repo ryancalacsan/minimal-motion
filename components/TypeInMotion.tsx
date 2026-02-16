@@ -11,6 +11,7 @@ import {
   useInView,
 } from "motion/react";
 import { useCursor } from "@/context/CursorContext";
+import { useTouchDevice } from "@/hooks/useTouchDevice";
 
 export default function TypeInMotion() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -18,6 +19,7 @@ export default function TypeInMotion() {
   const prefersReduced = useReducedMotion();
   const isInView = useInView(sectionRef, { margin: "-100px", once: false });
   const { setCursorVariant, resetCursor } = useCursor();
+  const isTouch = useTouchDevice();
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -58,8 +60,15 @@ export default function TypeInMotion() {
     mouseX.set(Math.max(0, Math.min(1, normalized)));
   };
 
+  const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
+    if (!hoverRef.current || !e.touches[0]) return;
+    const rect = hoverRef.current.getBoundingClientRect();
+    const normalized = (e.touches[0].clientX - rect.left) / rect.width;
+    mouseX.set(Math.max(0, Math.min(1, normalized)));
+  };
+
   return (
-    <section id="type-in-motion" ref={sectionRef} className="relative min-h-[200vh] py-32">
+    <section id="type-in-motion" ref={sectionRef} className="relative min-h-[150vh] py-20 sm:min-h-[200vh] sm:py-32">
       <div className="sticky top-0 flex min-h-screen flex-col items-center justify-center px-6">
         {/* Section label */}
         <motion.h2
@@ -128,11 +137,13 @@ export default function TypeInMotion() {
             className="mb-4 block font-[family-name:var(--font-inter)] text-[length:var(--text-fluid-xs)] uppercase tracking-[0.3em]"
             style={{ color: "var(--color-muted)" }}
           >
-            Hover to control
+            {isTouch ? "Touch to control" : "Hover to control"}
           </span>
           <motion.div
             ref={hoverRef}
             onMouseMove={handleHoverMove}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={() => mouseX.set(0.5)}
             onMouseEnter={() => setCursorVariant("magnetic")}
             onMouseLeave={() => {
               resetCursor();

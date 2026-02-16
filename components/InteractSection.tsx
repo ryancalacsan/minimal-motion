@@ -28,7 +28,7 @@ export default function InteractSection() {
   const linksInView = useInView(linksRef, { margin: "-50px", once: true });
 
   return (
-    <section id="interact" className="px-6 py-32">
+    <section id="interact" className="px-6 py-20 sm:py-32">
       <div className="mx-auto max-w-5xl">
         {/* Section label */}
         <h2
@@ -43,7 +43,7 @@ export default function InteractSection() {
           {BUTTONS.map((btn, i) => (
             <MagneticElement key={btn.label} strength={0.2}>
               <motion.button
-                className="group relative w-full overflow-hidden rounded-lg border px-6 py-8 text-left transition-colors"
+                className="group relative w-full rounded-lg border px-6 py-8 text-left transition-colors"
                 style={{
                   borderColor: "var(--color-border)",
                   color: "var(--color-text)",
@@ -57,7 +57,7 @@ export default function InteractSection() {
                         scale: 0.98,
                       }
                 }
-                whileTap={{ scale: 0.95 }}
+                whileTap={{ scale: 0.95, borderColor: "var(--color-text)" }}
                 transition={{ duration: 0.2 }}
                 onMouseEnter={() => setCursorVariant(btn.variant)}
                 onMouseLeave={resetCursor}
@@ -119,6 +119,7 @@ export default function InteractSection() {
                   delay: i * 0.1,
                   ease: [0.16, 1, 0.3, 1],
                 }}
+                whileTap={{ x: 8 }}
                 onMouseEnter={() => setCursorVariant("link")}
                 onMouseLeave={resetCursor}
               >
@@ -131,7 +132,7 @@ export default function InteractSection() {
                 <span className="relative">
                   {link}
                   <span
-                    className="absolute -bottom-1 left-0 h-px w-0 transition-all duration-500 ease-[var(--ease-out-expo)] group-hover:w-full"
+                    className="absolute -bottom-1 left-0 h-px w-0 transition-all duration-500 ease-[var(--ease-out-expo)] group-hover:w-full active:w-full"
                     style={{ backgroundColor: "var(--color-text)" }}
                   />
                 </span>

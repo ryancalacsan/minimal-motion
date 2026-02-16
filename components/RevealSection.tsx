@@ -4,7 +4,7 @@ import TextReveal from "./TextReveal";
 
 export default function RevealSection() {
   return (
-    <section id="reveal-modes" className="px-6 py-32">
+    <section id="reveal-modes" className="px-6 py-20 sm:py-32">
       <div className="mx-auto max-w-5xl">
         {/* Section label */}
         <h2 className="sr-only">Reveal Modes</h2>

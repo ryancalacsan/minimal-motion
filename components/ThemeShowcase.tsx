@@ -21,33 +21,33 @@ export default function ThemeShowcase() {
   });
 
   return (
-    <section id="shift" className="px-6 py-32">
+    <section id="shift" className="px-6 py-20 sm:py-32">
       <div className="mx-auto max-w-5xl">
         {/* Section label */}
         <h2 className="sr-only">Shift — Theme Showcase</h2>
         <TextReveal
           text="Shift"
           mode="letter"
-          className="mb-20 font-[family-name:var(--font-syne)] text-[length:var(--text-fluid-hero)] font-bold leading-[1.1]"
+          className="mb-12 font-[family-name:var(--font-syne)] text-[length:var(--text-fluid-hero)] font-bold leading-[1.1] sm:mb-20"
           aria-hidden
         />
 
         <TextReveal
           text="A monochrome palette that breathes. Switch between light and dark to see every color transition smoothly."
           mode="word"
-          className="mb-16 max-w-2xl font-[family-name:var(--font-inter)] text-[length:var(--text-fluid-lg)] leading-relaxed"
+          className="mb-10 max-w-2xl font-[family-name:var(--font-inter)] text-[length:var(--text-fluid-lg)] leading-relaxed sm:mb-16"
           delay={0.2}
         />
 
         {/* Centered toggle */}
-        <div className="mb-20 flex justify-center">
+        <div className="mb-10 flex justify-center sm:mb-20">
           <ThemeToggle size="large" />
         </div>
 
         {/* Color palette display */}
         <div
           ref={paletteRef}
-          className="grid grid-cols-2 gap-4 sm:grid-cols-5"
+          className="grid grid-cols-5 gap-3 sm:gap-4"
         >
           {PALETTE.map((color, i) => (
             <motion.div
@@ -82,13 +82,13 @@ export default function ThemeShowcase() {
                 }}
               />
               <span
-                className="font-[family-name:var(--font-inter)] text-[length:var(--text-fluid-xs)]"
+                className="text-[10px] font-[family-name:var(--font-inter)] sm:text-[length:var(--text-fluid-xs)]"
                 style={{ color: "var(--color-muted)" }}
               >
                 {color.label}
               </span>
               <span
-                className="font-[family-name:var(--font-inter)] text-xs font-mono"
+                className="hidden font-[family-name:var(--font-inter)] text-xs font-mono sm:block"
                 style={{ color: "var(--color-muted)" }}
               >
                 {color.variable}

@@ -66,7 +66,7 @@ export default function Hero() {
       className="relative flex min-h-screen items-center justify-center overflow-hidden px-6"
     >
       <motion.div
-        className="text-center"
+        className="text-left sm:text-center"
         style={prefersReduced ? {} : { opacity, y }}
       >
         <MagneticElement strength={0.05}>

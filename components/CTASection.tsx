@@ -11,7 +11,7 @@ export default function CTASection() {
   const { setCursorVariant, resetCursor } = useCursor();
 
   return (
-    <section id="cta" ref={ref} className="px-6 py-40">
+    <section id="cta" ref={ref} className="px-6 py-24 sm:py-40">
       <div className="mx-auto flex max-w-5xl flex-col items-center text-center">
         <motion.h2
           className="font-[family-name:var(--font-syne)] text-[length:var(--text-fluid-3xl)] font-bold leading-[1.1]"
