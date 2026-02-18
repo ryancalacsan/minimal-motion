@@ -98,7 +98,7 @@ export default function TextStrokeSection() {
 
         {/* Demo 2: Tap/Hover-to-fill */}
         <div>
-          <div className="flex flex-col gap-2 sm:flex-row sm:gap-8 md:gap-12">
+          <div className="flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:gap-x-8 sm:gap-y-4 md:gap-x-12">
             {HOVER_WORDS.map((word) => (
               <HoverWord key={word} word={word} isTouch={isTouch} />
             ))}
