@@ -7,16 +7,16 @@ import {
   useTransform,
   useMotionValue,
   useSpring,
-  useReducedMotion,
   useInView,
 } from "motion/react";
 import { useCursor } from "@/context/CursorContext";
 import { useTouchDevice } from "@/hooks/useTouchDevice";
+import { useReducedMotionSafe } from "@/hooks/useReducedMotionSafe";
 
 export default function TypeInMotion() {
   const sectionRef = useRef<HTMLElement>(null);
   const hoverRef = useRef<HTMLDivElement>(null);
-  const prefersReduced = useReducedMotion();
+  const prefersReduced = useReducedMotionSafe();
   const isInView = useInView(sectionRef, { margin: "-100px", once: false });
   const { setCursorVariant, resetCursor } = useCursor();
   const isTouch = useTouchDevice();

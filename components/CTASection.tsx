@@ -4,11 +4,13 @@ import { useRef } from "react";
 import { motion, useInView } from "motion/react";
 import MagneticElement from "./MagneticElement";
 import { useCursor } from "@/context/CursorContext";
+import { useReducedMotionSafe } from "@/hooks/useReducedMotionSafe";
 
 export default function CTASection() {
   const ref = useRef<HTMLElement>(null);
   const isInView = useInView(ref, { margin: "-20%", once: true });
   const { setCursorVariant, resetCursor } = useCursor();
+  const prefersReduced = useReducedMotionSafe();
 
   return (
     <section id="cta" ref={ref} className="px-6 py-24 sm:py-40">
@@ -73,12 +75,12 @@ export default function CTASection() {
               <span>Get in Touch</span>
               <motion.span
                 className="inline-block"
-                animate={{ x: [0, 4, 0] }}
-                transition={{
-                  duration: 1.5,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
+                animate={prefersReduced ? {} : { x: [0, 4, 0] }}
+                transition={
+                  prefersReduced
+                    ? {}
+                    : { duration: 1.5, repeat: Infinity, ease: "easeInOut" }
+                }
               >
                 &rarr;
               </motion.span>

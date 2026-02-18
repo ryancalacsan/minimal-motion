@@ -1,7 +1,8 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useInView, useReducedMotion } from "motion/react";
+import { motion, useInView } from "motion/react";
+import { useReducedMotionSafe } from "@/hooks/useReducedMotionSafe";
 
 type RevealMode = "word" | "letter" | "line" | "mask";
 
@@ -11,6 +12,7 @@ interface TextRevealProps {
   className?: string;
   once?: boolean;
   delay?: number;
+  "aria-hidden"?: boolean;
 }
 
 export default function TextReveal({
@@ -19,14 +21,15 @@ export default function TextReveal({
   className = "",
   once = true,
   delay = 0,
+  "aria-hidden": ariaHidden,
 }: TextRevealProps) {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { margin: "-15%", once });
-  const prefersReduced = useReducedMotion();
+  const prefersReduced = useReducedMotionSafe();
 
   if (prefersReduced) {
     return (
-      <div ref={ref} className={className}>
+      <div ref={ref} className={className} aria-hidden={ariaHidden}>
         <motion.span
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : { opacity: 0 }}
@@ -40,7 +43,7 @@ export default function TextReveal({
 
   if (mode === "mask") {
     return (
-      <div ref={ref} className={className}>
+      <div ref={ref} className={className} aria-hidden={ariaHidden}>
         <motion.span
           className="inline-block"
           initial={{ clipPath: "inset(0 100% 0 0)" }}
@@ -64,7 +67,7 @@ export default function TextReveal({
   if (mode === "line") {
     const lines = text.split("\n");
     return (
-      <div ref={ref} aria-label={text} className={className}>
+      <div ref={ref} aria-label={text} className={className} aria-hidden={ariaHidden}>
         {lines.map((line, i) => (
           <div
             key={i}
@@ -94,6 +97,7 @@ export default function TextReveal({
         ref={ref}
         aria-label={text}
         className={className}
+        aria-hidden={ariaHidden}
         style={{ perspective: "1000px" }}
       >
         {text.split("").map((char, i) => (
@@ -127,7 +131,7 @@ export default function TextReveal({
   // Default: word mode
   const words = text.split(" ");
   return (
-    <div ref={ref} aria-label={text} className={className}>
+    <div ref={ref} aria-label={text} className={className} aria-hidden={ariaHidden}>
       {words.map((word, i) => (
         <span
           key={i}

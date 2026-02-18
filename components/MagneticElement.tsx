@@ -7,7 +7,6 @@ interface MagneticElementProps {
   children: React.ReactNode;
   strength?: number;
   className?: string;
-  as?: "div" | "button" | "a";
 }
 
 export default function MagneticElement({

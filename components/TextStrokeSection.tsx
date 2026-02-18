@@ -39,6 +39,7 @@ export default function TextStrokeSection() {
   });
 
   const clipRight = useTransform(scrollYProgress, [0, 1], [100, 0]);
+  const clipPath = useTransform(clipRight, (v) => `inset(0 ${v}% 0 0)`);
 
   return (
     <section
@@ -76,12 +77,7 @@ export default function TextStrokeSection() {
             {!prefersReduced && (
               <motion.span
                 className="text-stroke-filled absolute inset-0 font-[family-name:var(--font-syne)] text-[length:var(--text-fluid-hero)] font-bold uppercase leading-[1] tracking-tight select-none"
-                style={{
-                  clipPath: useTransform(
-                    clipRight,
-                    (v) => `inset(0 ${v}% 0 0)`
-                  ),
-                }}
+                style={{ clipPath }}
                 aria-hidden="true"
               >
                 Contrast

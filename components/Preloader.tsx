@@ -12,14 +12,16 @@ export default function Preloader({
   onComplete: () => void;
 }) {
   const prefersReduced = useReducedMotionSafe();
-  const [show, setShow] = useState(true);
+  const [show, setShow] = useState(() => {
+    if (typeof window === "undefined") return true;
+    return !sessionStorage.getItem(SESSION_KEY);
+  });
   const [letterRevealed, setLetterRevealed] = useState(false);
   const [lineExtended, setLineExtended] = useState(false);
 
   useEffect(() => {
     // Skip if reduced motion or already shown this session
-    if (prefersReduced || sessionStorage.getItem(SESSION_KEY)) {
-      setShow(false);
+    if (prefersReduced || !show) {
       onComplete();
       return;
     }

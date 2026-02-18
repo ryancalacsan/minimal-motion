@@ -1,15 +1,11 @@
 "use client";
 
 import { useRef } from "react";
-import {
-  motion,
-  useScroll,
-  useTransform,
-  useReducedMotion,
-} from "motion/react";
+import { motion, useScroll, useTransform } from "motion/react";
 import MagneticElement from "./MagneticElement";
 import { useCursor } from "@/context/CursorContext";
 import { useMounted } from "@/hooks/useMounted";
+import { useReducedMotionSafe } from "@/hooks/useReducedMotionSafe";
 
 const TITLE = "Minimal Motion";
 const WORDS = TITLE.split(" ");
@@ -45,7 +41,7 @@ const reducedLetterVariants = {
 
 export default function Hero() {
   const containerRef = useRef<HTMLElement>(null);
-  const prefersReduced = useReducedMotion();
+  const prefersReduced = useReducedMotionSafe();
   const { setCursorVariant, resetCursor } = useCursor();
   const mounted = useMounted();
 
@@ -162,12 +158,16 @@ export default function Hero() {
         <motion.div
           className="h-12 w-px"
           style={{ backgroundColor: "var(--color-muted)" }}
-          animate={{ scaleY: [0, 1, 0], originY: 0 }}
-          transition={{
-            duration: 2,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
+          animate={
+            prefersReduced
+              ? { scaleY: 1, originY: 0 }
+              : { scaleY: [0, 1, 0], originY: 0 }
+          }
+          transition={
+            prefersReduced
+              ? { duration: 0.3 }
+              : { duration: 2, repeat: Infinity, ease: "easeInOut" }
+          }
         />
       </motion.div>
     </section>

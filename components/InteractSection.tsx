@@ -1,15 +1,11 @@
 "use client";
 
 import { useRef } from "react";
-import {
-  motion,
-  useReducedMotion,
-  useInView,
-  useAnimate,
-} from "motion/react";
+import { motion, useInView, useAnimate } from "motion/react";
 import MagneticElement from "./MagneticElement";
 import { useCursor } from "@/context/CursorContext";
 import { useTouchDevice } from "@/hooks/useTouchDevice";
+import { useReducedMotionSafe } from "@/hooks/useReducedMotionSafe";
 
 const BUTTONS = [
   { label: "Explore", variant: "link" as const },
@@ -105,7 +101,7 @@ function DisciplineLink({
 
 export default function InteractSection() {
   const { setCursorVariant, resetCursor } = useCursor();
-  const prefersReduced = useReducedMotion();
+  const prefersReduced = useReducedMotionSafe();
   const isTouch = useTouchDevice();
   const gridRef = useRef<HTMLDivElement>(null);
   const gridInView = useInView(gridRef, { margin: "-50px", once: true });

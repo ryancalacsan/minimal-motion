@@ -71,7 +71,6 @@ components/
   Footer.tsx               # Tech stack, social links
 hooks/
   useMagnetic.ts           # Spring-physics magnetic pull
-  useMousePosition.ts      # Mouse tracking
   useMounted.ts            # Hydration-safe mount check
   useTouchDevice.ts        # Touch capability detection
   useReducedMotionSafe.ts  # SSR-safe reduced motion check
