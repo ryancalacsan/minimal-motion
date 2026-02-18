@@ -111,14 +111,59 @@ html.lenis body {
 }
 
 /* ─── Footer Social Links ─── */
-.footer-social-link:hover {
-  color: var(--color-text) !important;
+@media (hover: hover) {
+  .footer-social-link:hover {
+    color: var(--color-text) !important;
+  }
+
+  /* ─── Tech Stack Pills ─── */
+  .tech-pill:hover {
+    color: var(--color-text) !important;
+    border-color: var(--color-text) !important;
+  }
 }
 
-/* ─── Tech Stack Pills ─── */
-.tech-pill:hover {
-  color: var(--color-text) !important;
-  border-color: var(--color-text) !important;
+/* ─── Text Stroke (multi-shadow outline — avoids internal glyph artifacts) ─── */
+.text-stroke-outline,
+.text-stroke-filled {
+  --_stroke: var(--color-text);
+  text-shadow:
+    0 -1px 0 var(--_stroke),
+    0 1px 0 var(--_stroke),
+    -1px 0 0 var(--_stroke),
+    1px 0 0 var(--_stroke),
+    -0.7px -0.7px 0 var(--_stroke),
+    0.7px -0.7px 0 var(--_stroke),
+    -0.7px 0.7px 0 var(--_stroke),
+    0.7px 0.7px 0 var(--_stroke);
+}
+
+.text-stroke-outline {
+  color: var(--color-bg);
+}
+
+.text-stroke-filled {
+  color: var(--color-text);
+}
+
+/* ─── Marquee ─── */
+.marquee-track {
+  animation: marquee-scroll 10s linear infinite;
+}
+
+@media (min-width: 768px) {
+  .marquee-track {
+    animation-duration: 20s;
+  }
+}
+
+@keyframes marquee-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-25%);
+  }
 }
 
 /* ─── Reduced Motion ─── */

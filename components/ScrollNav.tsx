@@ -9,8 +9,11 @@ const SECTIONS = [
   { id: "hero", label: "Hero" },
   { id: "type-in-motion", label: "Type" },
   { id: "reveal-modes", label: "Reveal" },
+  { id: "outline", label: "Outline" },
   { id: "interact", label: "Interact" },
+  { id: "horizontal", label: "Principles" },
   { id: "shift", label: "Shift" },
+  { id: "compose", label: "Compose" },
   { id: "cta", label: "CTA" },
 ];
 

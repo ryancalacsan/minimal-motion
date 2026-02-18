@@ -1,9 +1,15 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useReducedMotion, useInView } from "motion/react";
+import {
+  motion,
+  useReducedMotion,
+  useInView,
+  useAnimate,
+} from "motion/react";
 import MagneticElement from "./MagneticElement";
 import { useCursor } from "@/context/CursorContext";
+import { useTouchDevice } from "@/hooks/useTouchDevice";
 
 const BUTTONS = [
   { label: "Explore", variant: "link" as const },
@@ -21,9 +27,88 @@ const LINKS = [
   "Micro-interactions",
 ];
 
+function DisciplineLink({
+  link,
+  index,
+  inView,
+  isTouch,
+}: {
+  link: string;
+  index: number;
+  inView: boolean;
+  isTouch: boolean;
+}) {
+  const { setCursorVariant, resetCursor } = useCursor();
+  const [scope, animate] = useAnimate();
+
+  const handleTap = async () => {
+    await animate(
+      scope.current,
+      { x: 12 },
+      { duration: 0.15, ease: "easeOut" }
+    );
+    await animate(
+      scope.current,
+      { x: 0 },
+      { duration: 0.4, ease: [0.16, 1, 0.3, 1] }
+    );
+  };
+
+  return (
+    <motion.a
+      ref={scope}
+      href="#"
+      onClick={(e) => {
+        e.preventDefault();
+        handleTap();
+      }}
+      className="group relative inline-flex w-full select-none items-baseline gap-4 border-b py-4 font-[family-name:var(--font-syne)] text-[length:var(--text-fluid-xl)] font-medium sm:w-fit sm:border-0 sm:py-2"
+      style={{
+        color: "var(--color-text)",
+        borderColor: "var(--color-border)",
+      }}
+      initial={{ opacity: 0, x: -20 }}
+      animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
+      transition={{
+        duration: 0.6,
+        delay: index * 0.1,
+        ease: [0.16, 1, 0.3, 1],
+      }}
+      onMouseEnter={() => !isTouch && setCursorVariant("link")}
+      onMouseLeave={() => !isTouch && resetCursor()}
+    >
+      <span
+        className="text-[11px] tabular-nums"
+        style={{ color: "var(--color-border)" }}
+      >
+        {String(index + 1).padStart(2, "0")}
+      </span>
+      <span className="relative flex-1">
+        {link}
+        {/* Desktop: hover-reveal underline */}
+        <span
+          className="absolute -bottom-1 left-0 hidden h-px w-0 transition-all duration-500 ease-[var(--ease-out-expo)] group-hover:w-full sm:block"
+          style={{ backgroundColor: "var(--color-text)" }}
+        />
+      </span>
+      {/* Mobile: arrow */}
+      <span
+        className="font-[family-name:var(--font-inter)] text-[length:var(--text-fluid-sm)] opacity-30 sm:hidden"
+        style={{ color: "var(--color-text)" }}
+        aria-hidden="true"
+      >
+        &rarr;
+      </span>
+    </motion.a>
+  );
+}
+
 export default function InteractSection() {
   const { setCursorVariant, resetCursor } = useCursor();
   const prefersReduced = useReducedMotion();
+  const isTouch = useTouchDevice();
+  const gridRef = useRef<HTMLDivElement>(null);
+  const gridInView = useInView(gridRef, { margin: "-50px", once: true });
   const linksRef = useRef<HTMLDivElement>(null);
   const linksInView = useInView(linksRef, { margin: "-50px", once: true });
 
@@ -39,15 +124,29 @@ export default function InteractSection() {
         </h2>
 
         {/* Magnetic button grid */}
-        <div className="mb-24 grid grid-cols-2 gap-4 sm:grid-cols-3">
+        <div
+          ref={gridRef}
+          className="mb-24 grid grid-cols-2 gap-4 sm:grid-cols-3"
+        >
           {BUTTONS.map((btn, i) => (
             <MagneticElement key={btn.label} strength={0.2}>
               <motion.button
-                className="group relative w-full rounded-lg border px-6 py-8 text-left transition-colors"
+                className="group relative w-full select-none overflow-hidden rounded-lg border px-6 py-8 text-left"
                 style={{
                   borderColor: "var(--color-border)",
                   color: "var(--color-text)",
                   backgroundColor: "transparent",
+                }}
+                initial={{ opacity: 0, y: 20 }}
+                animate={
+                  gridInView
+                    ? { opacity: 1, y: 0 }
+                    : { opacity: 0, y: 20 }
+                }
+                transition={{
+                  duration: 0.5,
+                  delay: i * 0.08,
+                  ease: [0.16, 1, 0.3, 1],
                 }}
                 whileHover={
                   prefersReduced
@@ -57,14 +156,18 @@ export default function InteractSection() {
                         scale: 0.98,
                       }
                 }
-                whileTap={{ scale: 0.95, borderColor: "var(--color-text)" }}
-                transition={{ duration: 0.2 }}
-                onMouseEnter={() => setCursorVariant(btn.variant)}
-                onMouseLeave={resetCursor}
+                whileTap={{
+                  scale: 0.95,
+                  backgroundColor: "var(--color-text)",
+                  color: "var(--color-bg)",
+                  borderColor: "var(--color-text)",
+                }}
+                onMouseEnter={() => !isTouch && setCursorVariant(btn.variant)}
+                onMouseLeave={() => !isTouch && resetCursor()}
               >
                 <span
-                  className="mb-2 block font-[family-name:var(--font-inter)] text-[11px] tabular-nums transition-colors duration-300"
-                  style={{ color: "var(--color-border)" }}
+                  className="mb-2 block font-[family-name:var(--font-inter)] text-[11px] tabular-nums"
+                  style={{ color: "inherit", opacity: 0.4 }}
                 >
                   {String(i + 1).padStart(2, "0")}
                 </span>
@@ -79,16 +182,17 @@ export default function InteractSection() {
         {/* Interactive text block */}
         <div
           className="mb-24"
-          onMouseEnter={() => setCursorVariant("text")}
-          onMouseLeave={resetCursor}
+          onMouseEnter={() => !isTouch && setCursorVariant("text")}
+          onMouseLeave={() => !isTouch && resetCursor()}
         >
           <p
             className="max-w-2xl font-[family-name:var(--font-inter)] text-[length:var(--text-fluid-lg)] leading-relaxed"
             style={{ color: "var(--color-text)" }}
           >
-            The best interfaces feel inevitable. Every transition considered,
-            every movement purposeful. This is what happens when type
-            meets motion — not decoration, but communication.
+            Nothing here exists without reason. Each element responds,
+            each transition tells you something. When type and motion
+            share the same language, the interface disappears &mdash; and
+            only the experience remains.
           </p>
         </div>
 
@@ -100,43 +204,15 @@ export default function InteractSection() {
           >
             Disciplines
           </span>
-          <div className="flex flex-col gap-2">
+          <div className="flex flex-col">
             {LINKS.map((link, i) => (
-              <motion.a
+              <DisciplineLink
                 key={link}
-                href="#"
-                onClick={(e) => e.preventDefault()}
-                className="group relative inline-flex w-fit items-baseline gap-4 font-[family-name:var(--font-syne)] text-[length:var(--text-fluid-xl)] font-medium"
-                style={{ color: "var(--color-text)" }}
-                initial={{ opacity: 0, x: -20 }}
-                animate={
-                  linksInView
-                    ? { opacity: 1, x: 0 }
-                    : { opacity: 0, x: -20 }
-                }
-                transition={{
-                  duration: 0.6,
-                  delay: i * 0.1,
-                  ease: [0.16, 1, 0.3, 1],
-                }}
-                whileTap={{ x: 8 }}
-                onMouseEnter={() => setCursorVariant("link")}
-                onMouseLeave={resetCursor}
-              >
-                <span
-                  className="text-[11px] tabular-nums"
-                  style={{ color: "var(--color-border)" }}
-                >
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-                <span className="relative">
-                  {link}
-                  <span
-                    className="absolute -bottom-1 left-0 h-px w-0 transition-all duration-500 ease-[var(--ease-out-expo)] group-hover:w-full active:w-full"
-                    style={{ backgroundColor: "var(--color-text)" }}
-                  />
-                </span>
-              </motion.a>
+                link={link}
+                index={i}
+                inView={linksInView}
+                isTouch={isTouch}
+              />
             ))}
           </div>
         </div>

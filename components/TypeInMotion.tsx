@@ -126,9 +126,9 @@ export default function TypeInMotion() {
           className="mt-6 max-w-md text-center font-[family-name:var(--font-inter)] text-[length:var(--text-fluid-sm)]"
           style={{ color: "var(--color-muted)" }}
         >
-          Variable fonts respond to scroll position.
+          One typeface, infinite expression.
           <br />
-          Font weight shifts from 400 to 800 as you move.
+          Weight responds to your scroll &mdash; light to bold, effortlessly.
         </p>
 
         {/* Hover-driven weight demo */}

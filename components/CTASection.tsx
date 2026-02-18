@@ -43,8 +43,8 @@ export default function CTASection() {
             ease: [0.16, 1, 0.3, 1],
           }}
         >
-          Interested in collaborating or just want to say hello? Let&rsquo;s
-          connect and make the web move.
+          Have a project that deserves this kind of attention?
+          Let&rsquo;s talk about making something that moves.
         </motion.p>
 
         <motion.div

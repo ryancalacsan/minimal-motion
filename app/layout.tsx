@@ -3,6 +3,8 @@ import { ThemeProvider } from "next-themes";
 import { syne, inter, instrumentSerif } from "@/lib/fonts";
 import { CursorProvider } from "@/context/CursorContext";
 import CustomCursor from "@/components/CustomCursor";
+import ScrollProgressBar from "@/components/ScrollProgressBar";
+import NoiseOverlay from "@/components/NoiseOverlay";
 import ScrollNav from "@/components/ScrollNav";
 import SmoothScroll from "@/components/SmoothScroll";
 import "./globals.css";
@@ -56,6 +58,7 @@ export default function RootLayout({
       <body>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
           <CursorProvider>
+            <NoiseOverlay />
             <a
               href="#main-content"
               className="fixed top-4 left-4 z-[10000] -translate-y-20 rounded-md px-4 py-2 font-[family-name:var(--font-inter)] text-sm font-medium transition-transform focus:translate-y-0"
@@ -66,6 +69,7 @@ export default function RootLayout({
             >
               Skip to content
             </a>
+            <ScrollProgressBar />
             <CustomCursor />
             <ScrollNav />
             <SmoothScroll>{children}</SmoothScroll>

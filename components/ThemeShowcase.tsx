@@ -33,7 +33,7 @@ export default function ThemeShowcase() {
         />
 
         <TextReveal
-          text="A monochrome palette that breathes. Switch between light and dark to see every color transition smoothly."
+          text="A monochrome palette that breathes. Toggle between light and dark — every token transitions in concert."
           mode="word"
           className="mb-10 max-w-2xl font-[family-name:var(--font-inter)] text-[length:var(--text-fluid-lg)] leading-relaxed sm:mb-16"
           delay={0.2}
@@ -74,6 +74,10 @@ export default function ThemeShowcase() {
                 whileHover={{
                   scale: 1.05,
                   rotate: 2,
+                }}
+                whileTap={{
+                  scale: 0.95,
+                  rotate: -1,
                 }}
                 transition={{
                   type: "spring",

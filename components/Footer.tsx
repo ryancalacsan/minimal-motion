@@ -7,7 +7,7 @@ import ThemeToggle from "./ThemeToggle";
 import { useCursor } from "@/context/CursorContext";
 
 const TECH_STACK = [
-  "Next.js 15",
+  "Next.js 16",
   "Motion",
   "Tailwind CSS v4",
   "Lenis",
