@@ -113,11 +113,18 @@ export default function InteractSection() {
       <div className="mx-auto max-w-5xl">
         {/* Section label */}
         <h2
-          className="mb-12 font-[family-name:var(--font-inter)] text-[length:var(--text-fluid-xs)] uppercase tracking-[0.3em]"
+          className="font-[family-name:var(--font-inter)] text-[length:var(--text-fluid-xs)] uppercase tracking-[0.3em]"
           style={{ color: "var(--color-muted)" }}
         >
           Interact
         </h2>
+        <p
+          className="mb-12 mt-4 max-w-md font-[family-name:var(--font-instrument)] text-[length:var(--text-fluid-lg)] italic"
+          style={{ color: "var(--color-muted)" }}
+        >
+          Magnetic pull, cursor morphing, tap feedback &mdash; buttons
+          that respond before you ask.
+        </p>
 
         {/* Magnetic button grid */}
         <div
@@ -195,11 +202,17 @@ export default function InteractSection() {
         {/* Animated link list */}
         <div ref={linksRef}>
           <span
-            className="mb-6 block font-[family-name:var(--font-inter)] text-[length:var(--text-fluid-xs)] uppercase tracking-[0.3em]"
+            className="mb-2 block font-[family-name:var(--font-inter)] text-[length:var(--text-fluid-xs)] uppercase tracking-[0.3em]"
             style={{ color: "var(--color-muted)" }}
           >
             Disciplines
           </span>
+          <p
+            className="mb-6 max-w-sm font-[family-name:var(--font-instrument)] text-[length:var(--text-fluid-base)] italic"
+            style={{ color: "var(--color-muted)" }}
+          >
+            The territories where type, motion, and interaction overlap.
+          </p>
           <div className="flex flex-col">
             {LINKS.map((link, i) => (
               <DisciplineLink

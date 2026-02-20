@@ -144,14 +144,32 @@ export default function HorizontalScrollSection() {
         id="horizontal"
         className="sticky top-0 flex h-screen flex-col overflow-hidden"
       >
-        {/* Label */}
-        <div className="absolute top-8 left-8 z-10 md:left-16">
+        {/* Label + scroll hint */}
+        <div className="absolute top-8 left-8 z-10 flex items-center gap-6 md:left-16">
           <p
             className="font-[family-name:var(--font-inter)] text-[length:var(--text-fluid-sm)] uppercase tracking-[0.2em]"
             style={{ color: "var(--color-muted)" }}
           >
             Principles
           </p>
+          <div className="flex items-center gap-2" aria-hidden="true">
+            <motion.div
+              className="h-px w-8"
+              style={{ backgroundColor: "var(--color-muted)" }}
+              animate={{ scaleX: [0, 1, 0] }}
+              transition={{
+                duration: 2,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+            />
+            <span
+              className="font-[family-name:var(--font-inter)] text-[10px] uppercase tracking-[0.2em]"
+              style={{ color: "var(--color-muted)" }}
+            >
+              Scroll
+            </span>
+          </div>
         </div>
 
         {/* Panels */}

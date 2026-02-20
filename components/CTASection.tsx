@@ -25,12 +25,12 @@ export default function CTASection() {
             ease: [0.16, 1, 0.3, 1],
           }}
         >
-          Let&rsquo;s Create
+          Let&rsquo;s Build
           <br />
           <span
             className="font-[family-name:var(--font-instrument)] italic font-normal"
           >
-            Some Motion
+            Something Real
           </span>
         </motion.h2>
 
@@ -45,8 +45,8 @@ export default function CTASection() {
             ease: [0.16, 1, 0.3, 1],
           }}
         >
-          Have a project that deserves this kind of attention?
-          Let&rsquo;s talk about making something that moves.
+          I care about the details that most people never notice but
+          everyone feels. If that resonates, let&rsquo;s talk.
         </motion.p>
 
         <motion.div
@@ -61,7 +61,7 @@ export default function CTASection() {
         >
           <MagneticElement strength={0.15}>
             <motion.a
-              href="mailto:hello@example.com"
+              href="mailto:calacsancode@gmail.com"
               className="group relative inline-flex items-center gap-3 rounded-full border px-8 py-4 font-[family-name:var(--font-syne)] text-[length:var(--text-fluid-base)] font-semibold transition-colors duration-300"
               style={{
                 borderColor: "var(--color-text)",
@@ -87,6 +87,25 @@ export default function CTASection() {
             </motion.a>
           </MagneticElement>
         </motion.div>
+
+        <motion.a
+          href="https://ryancalacsan.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-6 font-[family-name:var(--font-inter)] text-[length:var(--text-fluid-sm)] transition-colors duration-300"
+          style={{ color: "var(--color-muted)" }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          transition={{
+            duration: 0.8,
+            delay: 0.6,
+            ease: [0.16, 1, 0.3, 1],
+          }}
+          onMouseEnter={() => setCursorVariant("link")}
+          onMouseLeave={resetCursor}
+        >
+          ryancalacsan.com &rarr;
+        </motion.a>
       </div>
     </section>
   );

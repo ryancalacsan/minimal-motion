@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     "animation",
     "micro-interactions",
   ],
-  authors: [{ name: "Minimal Motion" }],
+  authors: [{ name: "Ryan Calacsan" }],
   openGraph: {
     title: "Minimal Motion — Typography in Motion",
     description:

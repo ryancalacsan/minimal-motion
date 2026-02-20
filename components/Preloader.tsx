@@ -1,10 +1,12 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useSyncExternalStore } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { useReducedMotionSafe } from "@/hooks/useReducedMotionSafe";
 
 const SESSION_KEY = "mm-preloader-shown";
+
+const emptySubscribe = () => () => {};
 
 export default function Preloader({
   onComplete,
@@ -12,16 +14,20 @@ export default function Preloader({
   onComplete: () => void;
 }) {
   const prefersReduced = useReducedMotionSafe();
-  const [show, setShow] = useState(() => {
-    if (typeof window === "undefined") return true;
-    return !sessionStorage.getItem(SESSION_KEY);
-  });
+  const alreadyShown = useSyncExternalStore(
+    emptySubscribe,
+    () => !!sessionStorage.getItem(SESSION_KEY),
+    () => false,
+  );
+
+  const shouldSkip = prefersReduced || alreadyShown;
+
+  const [show, setShow] = useState(true);
   const [letterRevealed, setLetterRevealed] = useState(false);
   const [lineExtended, setLineExtended] = useState(false);
 
   useEffect(() => {
-    // Skip if reduced motion or already shown this session
-    if (prefersReduced || !show) {
+    if (shouldSkip) {
       onComplete();
       return;
     }
@@ -38,9 +44,9 @@ export default function Preloader({
       clearTimeout(t2);
       clearTimeout(t3);
     };
-  }, [prefersReduced, onComplete]);
+  }, [shouldSkip, onComplete]);
 
-  if (prefersReduced) return null;
+  if (shouldSkip) return null;
 
   return (
     <AnimatePresence

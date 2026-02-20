@@ -5,6 +5,7 @@ import { motion, useInView } from "motion/react";
 import MagneticElement from "./MagneticElement";
 import ThemeToggle from "./ThemeToggle";
 import { useCursor } from "@/context/CursorContext";
+import { useReducedMotionSafe } from "@/hooks/useReducedMotionSafe";
 
 const TECH_STACK = [
   "Next.js 16",
@@ -15,13 +16,14 @@ const TECH_STACK = [
 ];
 
 const SOCIALS = [
-  { label: "GitHub", href: "https://github.com" },
-  { label: "Twitter", href: "https://twitter.com" },
-  { label: "LinkedIn", href: "https://linkedin.com" },
+  { label: "GitHub", href: "https://github.com/ryancalacsan" },
+  { label: "X", href: "https://x.com/ryancalacsan" },
+  { label: "LinkedIn", href: "https://linkedin.com/in/ryancalacsan" },
 ];
 
 export default function Footer() {
   const { setCursorVariant, resetCursor } = useCursor();
+  const prefersReduced = useReducedMotionSafe();
   const pillsRef = useRef<HTMLDivElement>(null);
   const pillsInView = useInView(pillsRef, { margin: "-50px", once: true });
 
@@ -31,8 +33,42 @@ export default function Footer() {
       style={{ borderColor: "var(--color-border)" }}
     >
       <div className="mx-auto max-w-5xl">
+        {/* Back to top */}
+        <div className="mb-16 flex justify-center">
+          <MagneticElement strength={0.15}>
+            <button
+              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+              className="flex flex-col items-center gap-2"
+              onMouseEnter={() => setCursorVariant("link")}
+              onMouseLeave={resetCursor}
+              aria-label="Scroll to top"
+            >
+              <motion.div
+                className="h-12 w-px"
+                style={{ backgroundColor: "var(--color-muted)" }}
+                animate={
+                  prefersReduced
+                    ? { scaleY: 1, originY: 1 }
+                    : { scaleY: [0, 1, 0], originY: 1 }
+                }
+                transition={
+                  prefersReduced
+                    ? { duration: 0.3 }
+                    : { duration: 2, repeat: Infinity, ease: "easeInOut" }
+                }
+              />
+              <span
+                className="font-[family-name:var(--font-inter)] text-[length:var(--text-fluid-xs)] uppercase tracking-[0.2em]"
+                style={{ color: "var(--color-muted)" }}
+              >
+                Top
+              </span>
+            </button>
+          </MagneticElement>
+        </div>
+
         <div className="flex flex-col gap-12 sm:flex-row sm:items-start sm:justify-between">
-          {/* Left: name + toggle */}
+          {/* Left: name + attribution + toggle */}
           <div className="flex flex-col gap-4">
             <span
               className="font-[family-name:var(--font-syne)] text-[length:var(--text-fluid-lg)] font-bold"
@@ -40,6 +76,12 @@ export default function Footer() {
             >
               Minimal Motion
             </span>
+            <p
+              className="font-[family-name:var(--font-instrument)] text-[length:var(--text-fluid-sm)] italic"
+              style={{ color: "var(--color-muted)" }}
+            >
+              Designed &amp; built by Ryan Calacsan
+            </p>
             <ThemeToggle />
           </div>
 
@@ -95,7 +137,7 @@ export default function Footer() {
           className="mt-12 font-[family-name:var(--font-inter)] text-[length:var(--text-fluid-xs)]"
           style={{ color: "var(--color-muted)" }}
         >
-          &copy; {new Date().getFullYear()} Minimal Motion. Built with restraint.
+          &copy; {new Date().getFullYear()} Minimal Motion.
         </div>
       </div>
     </footer>
