@@ -10,7 +10,7 @@ import SmoothScroll from "@/components/SmoothScroll";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://minimal-motion.vercel.app"),
+  metadataBase: new URL("https://minimal-motion-gray.vercel.app"),
   title: "Minimal Motion — Typography in Motion",
   description:
     "A typography-focused portfolio showcase demonstrating restraint, CSS mastery, and sophisticated micro-interactions. Built with Next.js, Motion, and Tailwind CSS v4.",

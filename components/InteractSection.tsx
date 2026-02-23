@@ -10,7 +10,7 @@ import { useReducedMotionSafe } from "@/hooks/useReducedMotionSafe";
 const BUTTONS = [
   { label: "Explore", variant: "link" as const },
   { label: "Create", variant: "magnetic" as const },
-  { label: "Design", variant: "link" as const },
+  { label: "Craft", variant: "link" as const },
   { label: "Build", variant: "magnetic" as const },
   { label: "Ship", variant: "link" as const },
   { label: "Iterate", variant: "magnetic" as const },

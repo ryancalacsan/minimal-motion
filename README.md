@@ -2,6 +2,10 @@
 
 A typography-focused, single-page portfolio showcase demonstrating restraint, CSS mastery, and sophisticated micro-interactions. Built with a monochrome palette where typography and motion are the stars.
 
+**[View Live](https://minimal-motion-gray.vercel.app)**
+
+![Minimal Motion Preview](./preview.png)
+
 ## Tech Stack
 
 - **Framework** — Next.js 16 (App Router)
@@ -68,7 +72,7 @@ components/
   ScrollNav.tsx            # Dot navigation for page sections
   ThemeToggle.tsx          # Accessible theme switch
   SectionDivider.tsx       # Visual section separator
-  Footer.tsx               # Tech stack, social links
+  Footer.tsx               # Back-to-top, attribution, tech stack, social links
 hooks/
   useMagnetic.ts           # Spring-physics magnetic pull
   useMounted.ts            # Hydration-safe mount check
@@ -83,4 +87,4 @@ lib/
 
 ## Deployment
 
-Deployed on [Vercel](https://vercel.com). No environment variables required.
+Deployed on [Vercel](https://minimal-motion-gray.vercel.app). No environment variables required.
