@@ -14,11 +14,11 @@ A typography-focused, single-page portfolio showcase demonstrating restraint, CS
 - **Smooth Scroll** — [Lenis](https://lenis.darkroom.engineering)
 - **Styling** — Tailwind CSS v4 (CSS-first config)
 - **Theming** — next-themes (light/dark)
-- **Fonts** — Syne (display), Inter (body), Instrument Serif (accent)
+- **Fonts** — Sora (display), Inter (body), Instrument Serif (accent)
 
 ## Features
 
-- **Scroll-driven variable font animation** — Font weight shifts from 400 to 800 as you scroll, using Syne's variable axis with spring-smoothed interpolation
+- **Scroll-driven variable font animation** — Font weight shifts from 400 to 800 as you scroll, using Sora's variable axis with spring-smoothed interpolation
 - **Multiple text reveal modes** — Word-by-word, letter-by-letter, line-by-line, and mask wipe animations triggered on scroll
 - **Custom cursor system** — Spring-following cursor with `mix-blend-difference`, morphs between variants (default, text, link, magnetic, hidden)
 - **Magnetic hover effects** — Interactive elements pull toward the cursor with spring physics
