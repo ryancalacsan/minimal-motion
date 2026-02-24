@@ -1,14 +1,14 @@
-"use client";
+"use client"
 
-import { useRef, useState } from "react";
-import { motion, useScroll, useTransform } from "motion/react";
-import { useReducedMotionSafe } from "@/hooks/useReducedMotionSafe";
-import { useTouchDevice } from "@/hooks/useTouchDevice";
+import { useRef, useState } from "react"
+import { motion, useScroll, useTransform } from "motion/react"
+import { useReducedMotionSafe } from "@/hooks/useReducedMotionSafe"
+import { useTouchDevice } from "@/hooks/useTouchDevice"
 
-const HOVER_WORDS = ["Form", "Function", "Finesse"];
+const HOVER_WORDS = ["Form", "Function", "Finesse"]
 
 function HoverWord({ word, isTouch }: { word: string; isTouch: boolean }) {
-  const [active, setActive] = useState(false);
+  const [active, setActive] = useState(false)
 
   return (
     <button
@@ -24,22 +24,22 @@ function HoverWord({ word, isTouch }: { word: string; isTouch: boolean }) {
     >
       {word}
     </button>
-  );
+  )
 }
 
 export default function TextStrokeSection() {
-  const sectionRef = useRef<HTMLElement>(null);
-  const fillRef = useRef<HTMLDivElement>(null);
-  const prefersReduced = useReducedMotionSafe();
-  const isTouch = useTouchDevice();
+  const sectionRef = useRef<HTMLElement>(null)
+  const fillRef = useRef<HTMLDivElement>(null)
+  const prefersReduced = useReducedMotionSafe()
+  const isTouch = useTouchDevice()
 
   const { scrollYProgress } = useScroll({
     target: fillRef,
     offset: ["start 0.8", "end 0.3"],
-  });
+  })
 
-  const clipRight = useTransform(scrollYProgress, [0, 1], [100, 0]);
-  const clipPath = useTransform(clipRight, (v) => `inset(0 ${v}% 0 0)`);
+  const clipRight = useTransform(scrollYProgress, [0, 1], [100, 0])
+  const clipPath = useTransform(clipRight, (v) => `inset(0 ${v}% 0 0)`)
 
   return (
     <section
@@ -69,14 +69,14 @@ export default function TextStrokeSection() {
         <div ref={fillRef} className="mb-20 md:mb-28">
           <div className="relative inline-block">
             <span
-              className="text-stroke-outline font-syne text-fluid-hero font-bold uppercase leading-[1] tracking-tight select-none"
+              className="text-stroke-outline font-syne text-fluid-hero font-bold uppercase leading-none tracking-tight select-none"
               aria-hidden="true"
             >
               Contrast
             </span>
             {!prefersReduced && (
               <motion.span
-                className="text-stroke-filled absolute inset-0 font-syne text-fluid-hero font-bold uppercase leading-[1] tracking-tight select-none"
+                className="text-stroke-filled absolute inset-0 font-syne text-fluid-hero font-bold uppercase leading-none tracking-tight select-none"
                 style={{ clipPath }}
                 aria-hidden="true"
               >
@@ -108,5 +108,5 @@ export default function TextStrokeSection() {
         </div>
       </div>
     </section>
-  );
+  )
 }

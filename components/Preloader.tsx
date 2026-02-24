@@ -1,60 +1,54 @@
-"use client";
+"use client"
 
-import { useState, useEffect, useSyncExternalStore } from "react";
-import { motion, AnimatePresence } from "motion/react";
-import { useReducedMotionSafe } from "@/hooks/useReducedMotionSafe";
+import { useState, useEffect, useSyncExternalStore } from "react"
+import { motion, AnimatePresence } from "motion/react"
+import { useReducedMotionSafe } from "@/hooks/useReducedMotionSafe"
 
-const SESSION_KEY = "mm-preloader-shown";
+const SESSION_KEY = "mm-preloader-shown"
 
-const emptySubscribe = () => () => {};
+const emptySubscribe = () => () => {}
 
-export default function Preloader({
-  onComplete,
-}: {
-  onComplete: () => void;
-}) {
-  const prefersReduced = useReducedMotionSafe();
+export default function Preloader({ onComplete }: { onComplete: () => void }) {
+  const prefersReduced = useReducedMotionSafe()
   const alreadyShown = useSyncExternalStore(
     emptySubscribe,
     () => !!sessionStorage.getItem(SESSION_KEY),
     () => false,
-  );
+  )
 
-  const shouldSkip = prefersReduced || alreadyShown;
+  const shouldSkip = prefersReduced || alreadyShown
 
-  const [show, setShow] = useState(true);
-  const [letterRevealed, setLetterRevealed] = useState(false);
-  const [lineExtended, setLineExtended] = useState(false);
+  const [show, setShow] = useState(true)
+  const [letterRevealed, setLetterRevealed] = useState(false)
+  const [lineExtended, setLineExtended] = useState(false)
 
   useEffect(() => {
     if (shouldSkip) {
-      onComplete();
-      return;
+      onComplete()
+      return
     }
 
-    sessionStorage.setItem(SESSION_KEY, "1");
+    sessionStorage.setItem(SESSION_KEY, "1")
 
     // Sequence: letter reveal → line → hold → exit
-    const t1 = setTimeout(() => setLetterRevealed(true), 100);
-    const t2 = setTimeout(() => setLineExtended(true), 500);
-    const t3 = setTimeout(() => setShow(false), 1800);
+    const t1 = setTimeout(() => setLetterRevealed(true), 100)
+    const t2 = setTimeout(() => setLineExtended(true), 500)
+    const t3 = setTimeout(() => setShow(false), 1800)
 
     return () => {
-      clearTimeout(t1);
-      clearTimeout(t2);
-      clearTimeout(t3);
-    };
-  }, [shouldSkip, onComplete]);
+      clearTimeout(t1)
+      clearTimeout(t2)
+      clearTimeout(t3)
+    }
+  }, [shouldSkip, onComplete])
 
-  if (shouldSkip) return null;
+  if (shouldSkip) return null
 
   return (
-    <AnimatePresence
-      onExitComplete={onComplete}
-    >
+    <AnimatePresence onExitComplete={onComplete}>
       {show && (
         <motion.div
-          className="fixed inset-0 z-[10001] flex items-center justify-center"
+          className="fixed inset-0 z-10001 flex items-center justify-center"
           style={{ backgroundColor: "var(--color-bg)" }}
           exit={{ y: "-100%" }}
           transition={{
@@ -69,7 +63,7 @@ export default function Preloader({
               style={{ height: "clamp(4rem, 8vw, 8rem)" }}
             >
               <motion.span
-                className="block font-syne font-bold leading-[1]"
+                className="block font-syne font-bold leading-none"
                 style={{
                   color: "var(--color-text)",
                   fontSize: "clamp(4rem, 8vw, 8rem)",
@@ -100,5 +94,5 @@ export default function Preloader({
         </motion.div>
       )}
     </AnimatePresence>
-  );
+  )
 }

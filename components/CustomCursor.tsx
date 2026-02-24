@@ -1,10 +1,10 @@
-"use client";
+"use client"
 
-import { useEffect } from "react";
-import { motion, useMotionValue, useSpring } from "motion/react";
-import { useCursor, CursorVariant } from "@/context/CursorContext";
-import { useTouchDevice } from "@/hooks/useTouchDevice";
-import { useReducedMotionSafe } from "@/hooks/useReducedMotionSafe";
+import { useEffect } from "react"
+import { motion, useMotionValue, useSpring } from "motion/react"
+import { useCursor, CursorVariant } from "@/context/CursorContext"
+import { useTouchDevice } from "@/hooks/useTouchDevice"
+import { useReducedMotionSafe } from "@/hooks/useReducedMotionSafe"
 
 const variantSizes: Record<CursorVariant, number> = {
   default: 16,
@@ -12,38 +12,38 @@ const variantSizes: Record<CursorVariant, number> = {
   link: 60,
   magnetic: 48,
   hidden: 0,
-};
+}
 
 export default function CustomCursor() {
-  const { cursorState } = useCursor();
-  const isTouch = useTouchDevice();
-  const prefersReduced = useReducedMotionSafe();
+  const { cursorState } = useCursor()
+  const isTouch = useTouchDevice()
+  const prefersReduced = useReducedMotionSafe()
 
-  const cursorX = useMotionValue(0);
-  const cursorY = useMotionValue(0);
+  const cursorX = useMotionValue(0)
+  const cursorY = useMotionValue(0)
 
-  const springX = useSpring(cursorX, { damping: 25, stiffness: 250 });
-  const springY = useSpring(cursorY, { damping: 25, stiffness: 250 });
+  const springX = useSpring(cursorX, { damping: 25, stiffness: 250 })
+  const springY = useSpring(cursorY, { damping: 25, stiffness: 250 })
 
   useEffect(() => {
-    if (isTouch || prefersReduced) return;
+    if (isTouch || prefersReduced) return
 
     const handleMouseMove = (e: MouseEvent) => {
-      cursorX.set(e.clientX);
-      cursorY.set(e.clientY);
-    };
+      cursorX.set(e.clientX)
+      cursorY.set(e.clientY)
+    }
 
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, [isTouch, prefersReduced, cursorX, cursorY]);
+    window.addEventListener("mousemove", handleMouseMove)
+    return () => window.removeEventListener("mousemove", handleMouseMove)
+  }, [isTouch, prefersReduced, cursorX, cursorY])
 
-  if (isTouch || prefersReduced) return null;
+  if (isTouch || prefersReduced) return null
 
-  const size = variantSizes[cursorState.variant];
+  const size = variantSizes[cursorState.variant]
 
   return (
     <motion.div
-      className="pointer-events-none fixed top-0 left-0 z-[9999] flex items-center justify-center rounded-full mix-blend-difference"
+      className="pointer-events-none fixed top-0 left-0 z-9999 flex items-center justify-center rounded-full mix-blend-difference"
       style={{
         x: springX,
         y: springY,
@@ -77,5 +77,5 @@ export default function CustomCursor() {
         </motion.span>
       )}
     </motion.div>
-  );
+  )
 }

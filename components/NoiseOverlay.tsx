@@ -1,4 +1,4 @@
-"use client";
+"use client"
 
 export default function NoiseOverlay() {
   return (
@@ -15,12 +15,12 @@ export default function NoiseOverlay() {
       </svg>
       <div
         aria-hidden="true"
-        className="pointer-events-none fixed inset-0 z-[9997]"
+        className="pointer-events-none fixed inset-0 z-9997"
         style={{
           filter: "url(#noise-filter)",
           opacity: 0.04,
         }}
       />
     </>
-  );
+  )
 }
