@@ -10,7 +10,7 @@ import { useReducedMotionSafe } from "@/hooks/useReducedMotionSafe"
 const BUTTONS = [
   { label: "Explore", variant: "link" as const },
   { label: "Create", variant: "magnetic" as const },
-  { label: "Craft", variant: "link" as const },
+  { label: "Design", variant: "link" as const },
   { label: "Build", variant: "magnetic" as const },
   { label: "Ship", variant: "link" as const },
   { label: "Iterate", variant: "magnetic" as const },
@@ -54,7 +54,7 @@ function DisciplineLink({
         e.preventDefault()
         handleTap()
       }}
-      className="group relative inline-flex w-full select-none items-baseline gap-4 border-b py-4 font-syne text-fluid-xl font-medium sm:w-fit sm:border-0 sm:py-2"
+      className="group relative inline-flex w-full select-none items-baseline gap-4 border-b py-4 font-sora text-fluid-xl font-medium sm:w-fit sm:border-0 sm:py-2"
       style={{
         color: "var(--color-text)",
         borderColor: "var(--color-border)",
@@ -168,7 +168,7 @@ export default function InteractSection() {
                 >
                   {String(i + 1).padStart(2, "0")}
                 </span>
-                <span className="font-syne text-fluid-lg font-semibold">
+                <span className="font-sora text-fluid-lg font-semibold">
                   {btn.label}
                 </span>
               </motion.button>

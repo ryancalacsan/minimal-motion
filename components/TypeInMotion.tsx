@@ -83,7 +83,7 @@ export default function TypeInMotion() {
 
         {/* Scroll-driven weight */}
         <motion.div
-          className="font-syne text-fluid-hero leading-[1.1]"
+          className="font-sora text-fluid-hero leading-[1.1]"
           style={
             prefersReduced
               ? { color: "var(--color-text)", fontWeight: 700 }
@@ -154,7 +154,7 @@ export default function TypeInMotion() {
             whileHover={{ borderColor: "var(--color-muted)" }}
           >
             <motion.span
-              className="inline-block font-syne text-fluid-2xl leading-none"
+              className="inline-block font-sora text-fluid-2xl leading-none"
               style={
                 prefersReduced
                   ? { color: "var(--color-text)", fontWeight: 600 }

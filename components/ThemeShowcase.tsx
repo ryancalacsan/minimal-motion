@@ -28,7 +28,7 @@ export default function ThemeShowcase() {
         <TextReveal
           text="Shift"
           mode="letter"
-          className="mb-12 font-syne text-fluid-hero font-bold leading-[1.1] sm:mb-20"
+          className="mb-12 font-sora text-fluid-hero font-bold leading-[1.1] sm:mb-20"
           aria-hidden
         />
 

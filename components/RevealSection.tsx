@@ -25,7 +25,7 @@ export default function RevealSection() {
         <div className="mb-28">
           <div className="mb-4 flex items-baseline gap-4">
             <span
-              className="font-syne text-fluid-xs font-semibold tabular-nums"
+              className="font-sora text-fluid-xs font-semibold tabular-nums"
               style={{ color: "var(--color-border)" }}
             >
               01
@@ -40,7 +40,7 @@ export default function RevealSection() {
           <TextReveal
             text="Words arrive one at a time — measured, unhurried, each one intentional."
             mode="word"
-            className="font-syne text-fluid-2xl font-semibold leading-tight"
+            className="font-sora text-fluid-2xl font-semibold leading-tight"
             delay={0.1}
           />
         </div>
@@ -49,7 +49,7 @@ export default function RevealSection() {
         <div className="mb-28 text-center">
           <div className="mb-4 flex items-baseline justify-center gap-4">
             <span
-              className="font-syne text-fluid-xs font-semibold tabular-nums"
+              className="font-sora text-fluid-xs font-semibold tabular-nums"
               style={{ color: "var(--color-border)" }}
             >
               02
@@ -64,7 +64,7 @@ export default function RevealSection() {
           <TextReveal
             text="Precision"
             mode="letter"
-            className="font-syne text-fluid-hero font-bold leading-[1.1]"
+            className="font-sora text-fluid-hero font-bold leading-[1.1]"
           />
         </div>
 
@@ -72,7 +72,7 @@ export default function RevealSection() {
         <div className="mb-28 sm:ml-auto sm:max-w-2xl sm:text-right">
           <div className="mb-4 flex items-baseline gap-4 sm:justify-end">
             <span
-              className="font-syne text-fluid-xs font-semibold tabular-nums"
+              className="font-sora text-fluid-xs font-semibold tabular-nums"
               style={{ color: "var(--color-border)" }}
             >
               03
@@ -95,7 +95,7 @@ export default function RevealSection() {
         <div className="mb-28">
           <div className="mb-4 flex items-baseline gap-4">
             <span
-              className="font-syne text-fluid-xs font-semibold tabular-nums"
+              className="font-sora text-fluid-xs font-semibold tabular-nums"
               style={{ color: "var(--color-border)" }}
             >
               04
@@ -110,7 +110,7 @@ export default function RevealSection() {
           <TextReveal
             text="The finest interfaces feel inevitable — every transition considered, every movement with intent."
             mode="mask"
-            className="font-syne text-fluid-xl font-medium leading-snug"
+            className="font-sora text-fluid-xl font-medium leading-snug"
           />
         </div>
       </div>

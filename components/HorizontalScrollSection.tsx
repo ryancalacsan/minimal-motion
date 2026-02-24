@@ -57,7 +57,7 @@ function PanelContent({
           {panel.number} / 04
         </span>
         <h3
-          className="mb-6 font-syne text-fluid-3xl font-bold uppercase leading-[1.1] tracking-tight"
+          className="mb-6 font-sora text-fluid-3xl font-bold uppercase leading-[1.1] tracking-tight"
           style={{ color: "var(--color-text)" }}
         >
           {panel.title}
@@ -99,7 +99,7 @@ function ReducedMotionFallback() {
                 {panel.number}
               </span>
               <h3
-                className="mb-3 font-syne text-fluid-2xl font-bold uppercase leading-[1.1] tracking-tight"
+                className="mb-3 font-sora text-fluid-2xl font-bold uppercase leading-[1.1] tracking-tight"
                 style={{ color: "var(--color-text)" }}
               >
                 {panel.title}

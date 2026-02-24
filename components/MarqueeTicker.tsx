@@ -18,7 +18,7 @@ export default function MarqueeTicker() {
         style={{ borderColor: "var(--color-border)" }}
       >
         <p
-          className="truncate text-center font-syne text-fluid-xl font-bold uppercase tracking-[0.2em]"
+          className="truncate text-center font-sora text-fluid-xl font-bold uppercase tracking-[0.2em]"
           style={{ color: "var(--color-muted)" }}
         >
           MINIMAL MOTION &middot; TYPOGRAPHY &middot; INTERACTION &middot;
@@ -38,7 +38,7 @@ export default function MarqueeTicker() {
     >
       <div className="marquee-track flex whitespace-nowrap">
         <span
-          className="inline-block shrink-0 font-syne text-fluid-xl font-bold uppercase tracking-[0.2em]"
+          className="inline-block shrink-0 font-sora text-fluid-xl font-bold uppercase tracking-[0.2em]"
           style={{ color: "var(--color-muted)" }}
         >
           {TICKER_TEXT}
@@ -47,7 +47,7 @@ export default function MarqueeTicker() {
           <span
             key={i}
             aria-hidden="true"
-            className="inline-block shrink-0 font-syne text-fluid-xl font-bold uppercase tracking-[0.2em]"
+            className="inline-block shrink-0 font-sora text-fluid-xl font-bold uppercase tracking-[0.2em]"
             style={{ color: "var(--color-muted)" }}
           >
             {TICKER_TEXT}

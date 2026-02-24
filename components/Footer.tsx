@@ -71,7 +71,7 @@ export default function Footer() {
           {/* Left: name + attribution + toggle */}
           <div className="flex flex-col gap-4">
             <span
-              className="font-syne text-fluid-lg font-bold"
+              className="font-sora text-fluid-lg font-bold"
               style={{ color: "var(--color-text)" }}
             >
               Minimal Motion

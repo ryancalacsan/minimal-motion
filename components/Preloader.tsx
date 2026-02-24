@@ -63,7 +63,7 @@ export default function Preloader({ onComplete }: { onComplete: () => void }) {
               style={{ height: "clamp(4rem, 8vw, 8rem)" }}
             >
               <motion.span
-                className="block font-syne font-bold leading-none"
+                className="block font-sora font-bold leading-none"
                 style={{
                   color: "var(--color-text)",
                   fontSize: "clamp(4rem, 8vw, 8rem)",

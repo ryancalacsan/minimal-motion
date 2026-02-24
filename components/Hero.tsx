@@ -68,7 +68,7 @@ export default function Hero() {
         <MagneticElement strength={0.05}>
           <h1
             aria-label={TITLE}
-            className="font-syne text-fluid-hero font-bold leading-[1.1] tracking-tight"
+            className="font-sora text-fluid-hero font-bold leading-[1.1] tracking-tight"
             style={{
               color: "var(--color-text)",
               perspective: "1000px",

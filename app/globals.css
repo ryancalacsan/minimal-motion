@@ -6,7 +6,7 @@
 /* ─── Design Tokens ─── */
 @theme {
   /* Fonts */
-  --font-syne: var(--font-syne), ui-sans-serif, system-ui, sans-serif;
+  --font-sora: var(--font-sora), ui-sans-serif, system-ui, sans-serif;
   --font-inter: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   --font-instrument: var(--font-instrument), ui-serif, Georgia, serif;
 

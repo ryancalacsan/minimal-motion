@@ -16,7 +16,7 @@ export default function CTASection() {
     <section id="cta" ref={ref} className="px-6 py-24 sm:py-40">
       <div className="mx-auto flex max-w-5xl flex-col items-center text-center">
         <motion.h2
-          className="font-syne text-fluid-3xl font-bold leading-[1.1]"
+          className="font-sora text-fluid-3xl font-bold leading-[1.1]"
           style={{ color: "var(--color-text)" }}
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
@@ -62,7 +62,7 @@ export default function CTASection() {
           <MagneticElement strength={0.15}>
             <motion.a
               href="mailto:calacsancode@gmail.com"
-              className="group relative inline-flex items-center gap-3 rounded-full border px-8 py-4 font-syne text-fluid-base font-semibold transition-colors duration-300"
+              className="group relative inline-flex items-center gap-3 rounded-full border px-8 py-4 font-sora text-fluid-base font-semibold transition-colors duration-300"
               style={{
                 borderColor: "var(--color-text)",
                 color: "var(--color-text)",

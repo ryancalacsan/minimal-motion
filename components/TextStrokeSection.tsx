@@ -12,7 +12,7 @@ function HoverWord({ word, isTouch }: { word: string; isTouch: boolean }) {
 
   return (
     <button
-      className={`cursor-pointer font-syne text-fluid-3xl font-bold uppercase leading-[1.1] tracking-tight transition-all duration-500 ${
+      className={`cursor-pointer font-sora text-fluid-3xl font-bold uppercase leading-[1.1] tracking-tight transition-all duration-500 ${
         active ? "text-stroke-filled" : "text-stroke-outline"
       }`}
       onClick={isTouch ? () => setActive((prev) => !prev) : undefined}
@@ -69,14 +69,14 @@ export default function TextStrokeSection() {
         <div ref={fillRef} className="mb-20 md:mb-28">
           <div className="relative inline-block">
             <span
-              className="text-stroke-outline font-syne text-fluid-hero font-bold uppercase leading-none tracking-tight select-none"
+              className="text-stroke-outline font-sora text-fluid-hero font-bold uppercase leading-none tracking-tight select-none"
               aria-hidden="true"
             >
               Contrast
             </span>
             {!prefersReduced && (
               <motion.span
-                className="text-stroke-filled absolute inset-0 font-syne text-fluid-hero font-bold uppercase leading-none tracking-tight select-none"
+                className="text-stroke-filled absolute inset-0 font-sora text-fluid-hero font-bold uppercase leading-none tracking-tight select-none"
                 style={{ clipPath }}
                 aria-hidden="true"
               >

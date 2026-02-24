@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { ThemeProvider } from "next-themes";
-import { syne, inter, instrumentSerif } from "@/lib/fonts";
+import { sora, inter, instrumentSerif } from "@/lib/fonts";
 import { CursorProvider } from "@/context/CursorContext";
 import CustomCursor from "@/components/CustomCursor";
 import ScrollProgressBar from "@/components/ScrollProgressBar";
@@ -53,7 +53,7 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${syne.variable} ${inter.variable} ${instrumentSerif.variable}`}
+      className={`${sora.variable} ${inter.variable} ${instrumentSerif.variable}`}
     >
       <body>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
