@@ -75,7 +75,7 @@ export default function ScrollNav() {
           >
             {/* Label tooltip */}
             <span
-              className="absolute right-6 whitespace-nowrap rounded px-2 py-1 font-[family-name:var(--font-inter)] text-[11px] uppercase tracking-wider opacity-0 transition-opacity duration-200 group-hover:opacity-100"
+              className="absolute right-6 whitespace-nowrap rounded px-2 py-1 font-inter text-[11px] uppercase tracking-wider opacity-0 transition-opacity duration-200 group-hover:opacity-100"
               style={{
                 color: "var(--color-muted)",
               }}

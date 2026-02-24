@@ -68,7 +68,7 @@ export default function Hero() {
         <MagneticElement strength={0.05}>
           <h1
             aria-label={TITLE}
-            className="font-[family-name:var(--font-syne)] text-[length:var(--text-fluid-hero)] font-bold leading-[1.1] tracking-tight"
+            className="font-syne text-fluid-hero font-bold leading-[1.1] tracking-tight"
             style={{
               color: "var(--color-text)",
               perspective: "1000px",
@@ -110,7 +110,7 @@ export default function Hero() {
         </MagneticElement>
 
         <motion.p
-          className="mt-12 font-[family-name:var(--font-instrument)] text-[length:var(--text-fluid-xl)] italic"
+          className="mt-12 font-instrument text-fluid-xl italic"
           style={{ color: "var(--color-muted)" }}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -150,7 +150,7 @@ export default function Hero() {
         transition={{ delay: 2, duration: 1 }}
       >
         <span
-          className="font-[family-name:var(--font-inter)] text-[length:var(--text-fluid-xs)] uppercase tracking-[0.2em]"
+          className="font-inter text-fluid-xs uppercase tracking-[0.2em]"
           style={{ color: "var(--color-muted)" }}
         >
           Scroll

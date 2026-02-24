@@ -28,14 +28,14 @@ export default function ThemeShowcase() {
         <TextReveal
           text="Shift"
           mode="letter"
-          className="mb-12 font-[family-name:var(--font-syne)] text-[length:var(--text-fluid-hero)] font-bold leading-[1.1] sm:mb-20"
+          className="mb-12 font-syne text-fluid-hero font-bold leading-[1.1] sm:mb-20"
           aria-hidden
         />
 
         <TextReveal
           text="A monochrome palette that breathes. Toggle between light and dark — every token transitions in concert."
           mode="word"
-          className="mb-10 max-w-2xl font-[family-name:var(--font-inter)] text-[length:var(--text-fluid-lg)] leading-relaxed sm:mb-16"
+          className="mb-10 max-w-2xl font-inter text-fluid-lg leading-relaxed sm:mb-16"
           delay={0.2}
         />
 
@@ -86,13 +86,13 @@ export default function ThemeShowcase() {
                 }}
               />
               <span
-                className="text-[10px] font-[family-name:var(--font-inter)] sm:text-[length:var(--text-fluid-xs)]"
+                className="text-[10px] font-inter sm:text-fluid-xs"
                 style={{ color: "var(--color-muted)" }}
               >
                 {color.label}
               </span>
               <span
-                className="hidden font-[family-name:var(--font-inter)] text-xs font-mono sm:block"
+                className="hidden text-xs font-mono sm:block"
                 style={{ color: "var(--color-muted)" }}
               >
                 {color.variable}

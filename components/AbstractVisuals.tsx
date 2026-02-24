@@ -101,13 +101,13 @@ export default function AbstractVisuals() {
       {/* Section header */}
       <div className="relative z-10 mb-16 md:mb-24">
         <p
-          className="mb-4 font-[family-name:var(--font-inter)] text-[length:var(--text-fluid-sm)] uppercase tracking-[0.2em]"
+          className="mb-4 font-inter text-fluid-sm uppercase tracking-[0.2em]"
           style={{ color: "var(--color-muted)" }}
         >
           Compose
         </p>
         <p
-          className="max-w-md font-[family-name:var(--font-instrument)] text-[length:var(--text-fluid-lg)] italic"
+          className="max-w-md font-instrument text-fluid-lg italic"
           style={{ color: "var(--color-muted)" }}
         >
           Geometric primitives drawn by scroll &mdash; circles, arcs, and
@@ -118,7 +118,7 @@ export default function AbstractVisuals() {
       {/* Central text */}
       <div className="relative z-10 flex min-h-[40vh] items-center justify-center">
         <p
-          className="text-center font-[family-name:var(--font-instrument)] text-[length:var(--text-fluid-xl)] italic"
+          className="text-center font-instrument text-fluid-xl italic"
           style={{ color: "var(--color-muted)" }}
         >
           composition &amp; type

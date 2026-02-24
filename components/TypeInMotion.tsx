@@ -72,7 +72,7 @@ export default function TypeInMotion() {
       <div className="sticky top-0 flex min-h-screen flex-col items-center justify-center px-6">
         {/* Section label */}
         <motion.h2
-          className="mb-8 font-[family-name:var(--font-inter)] text-[length:var(--text-fluid-xs)] uppercase tracking-[0.3em]"
+          className="mb-8 font-inter text-fluid-xs uppercase tracking-[0.3em]"
           style={{ color: "var(--color-muted)" }}
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
@@ -83,7 +83,7 @@ export default function TypeInMotion() {
 
         {/* Scroll-driven weight */}
         <motion.div
-          className="font-[family-name:var(--font-syne)] text-[length:var(--text-fluid-hero)] leading-[1.1]"
+          className="font-syne text-fluid-hero leading-[1.1]"
           style={
             prefersReduced
               ? { color: "var(--color-text)", fontWeight: 700 }
@@ -113,7 +113,7 @@ export default function TypeInMotion() {
               />
             </div>
             <div
-              className="mt-2 flex justify-between font-[family-name:var(--font-inter)] text-[11px] tabular-nums"
+              className="mt-2 flex justify-between font-inter text-[11px] tabular-nums"
               style={{ color: "var(--color-muted)" }}
             >
               <span>400</span>
@@ -123,7 +123,7 @@ export default function TypeInMotion() {
         )}
 
         <p
-          className="mt-6 max-w-md text-center font-[family-name:var(--font-inter)] text-[length:var(--text-fluid-sm)]"
+          className="mt-6 max-w-md text-center font-inter text-fluid-sm"
           style={{ color: "var(--color-muted)" }}
         >
           One typeface, infinite expression.
@@ -134,7 +134,7 @@ export default function TypeInMotion() {
         {/* Hover-driven weight demo */}
         <div className="mt-16 w-full max-w-2xl">
           <span
-            className="mb-4 block font-[family-name:var(--font-inter)] text-[length:var(--text-fluid-xs)] uppercase tracking-[0.3em]"
+            className="mb-4 block font-inter text-fluid-xs uppercase tracking-[0.3em]"
             style={{ color: "var(--color-muted)" }}
           >
             {isTouch ? "Touch to control" : "Hover to control"}
@@ -154,7 +154,7 @@ export default function TypeInMotion() {
             whileHover={{ borderColor: "var(--color-muted)" }}
           >
             <motion.span
-              className="inline-block font-[family-name:var(--font-syne)] text-[length:var(--text-fluid-2xl)] leading-none"
+              className="inline-block font-syne text-fluid-2xl leading-none"
               style={
                 prefersReduced
                   ? { color: "var(--color-text)", fontWeight: 600 }
@@ -176,7 +176,7 @@ export default function TypeInMotion() {
             </div>
           </motion.div>
           <div
-            className="mt-2 flex justify-between font-[family-name:var(--font-inter)] text-[length:var(--text-fluid-xs)]"
+            className="mt-2 flex justify-between font-inter text-fluid-xs"
             style={{ color: "var(--color-muted)" }}
           >
             <span>Light 400</span>

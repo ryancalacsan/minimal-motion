@@ -61,7 +61,7 @@ export default function RootLayout({
             <NoiseOverlay />
             <a
               href="#main-content"
-              className="fixed top-4 left-4 z-[10000] -translate-y-20 rounded-md px-4 py-2 font-[family-name:var(--font-inter)] text-sm font-medium transition-transform focus:translate-y-0"
+              className="fixed top-4 left-4 z-10000 -translate-y-20 rounded-md px-4 py-2 font-inter text-sm font-medium transition-transform focus:translate-y-0"
               style={{
                 backgroundColor: "var(--color-text)",
                 color: "var(--color-bg)",

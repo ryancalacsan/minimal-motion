@@ -69,7 +69,7 @@ export default function Preloader({
               style={{ height: "clamp(4rem, 8vw, 8rem)" }}
             >
               <motion.span
-                className="block font-[family-name:var(--font-syne)] font-bold leading-[1]"
+                className="block font-syne font-bold leading-[1]"
                 style={{
                   color: "var(--color-text)",
                   fontSize: "clamp(4rem, 8vw, 8rem)",

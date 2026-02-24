@@ -12,7 +12,7 @@ function HoverWord({ word, isTouch }: { word: string; isTouch: boolean }) {
 
   return (
     <button
-      className={`cursor-pointer font-[family-name:var(--font-syne)] text-[length:var(--text-fluid-3xl)] font-bold uppercase leading-[1.1] tracking-tight transition-all duration-500 ${
+      className={`cursor-pointer font-syne text-fluid-3xl font-bold uppercase leading-[1.1] tracking-tight transition-all duration-500 ${
         active ? "text-stroke-filled" : "text-stroke-outline"
       }`}
       onClick={isTouch ? () => setActive((prev) => !prev) : undefined}
@@ -51,13 +51,13 @@ export default function TextStrokeSection() {
         {/* Section header */}
         <div className="mb-16 md:mb-24">
           <p
-            className="mb-4 font-[family-name:var(--font-inter)] text-[length:var(--text-fluid-sm)] uppercase tracking-[0.2em]"
+            className="mb-4 font-inter text-fluid-sm uppercase tracking-[0.2em]"
             style={{ color: "var(--color-muted)" }}
           >
             Outline &amp; Fill
           </p>
           <p
-            className="max-w-md font-[family-name:var(--font-instrument)] text-[length:var(--text-fluid-lg)] italic"
+            className="max-w-md font-instrument text-fluid-lg italic"
             style={{ color: "var(--color-muted)" }}
           >
             The space between visible and invisible &mdash; outlines that earn
@@ -69,14 +69,14 @@ export default function TextStrokeSection() {
         <div ref={fillRef} className="mb-20 md:mb-28">
           <div className="relative inline-block">
             <span
-              className="text-stroke-outline font-[family-name:var(--font-syne)] text-[length:var(--text-fluid-hero)] font-bold uppercase leading-[1] tracking-tight select-none"
+              className="text-stroke-outline font-syne text-fluid-hero font-bold uppercase leading-[1] tracking-tight select-none"
               aria-hidden="true"
             >
               Contrast
             </span>
             {!prefersReduced && (
               <motion.span
-                className="text-stroke-filled absolute inset-0 font-[family-name:var(--font-syne)] text-[length:var(--text-fluid-hero)] font-bold uppercase leading-[1] tracking-tight select-none"
+                className="text-stroke-filled absolute inset-0 font-syne text-fluid-hero font-bold uppercase leading-[1] tracking-tight select-none"
                 style={{ clipPath }}
                 aria-hidden="true"
               >
@@ -85,7 +85,7 @@ export default function TextStrokeSection() {
             )}
           </div>
           <p
-            className="mt-4 font-[family-name:var(--font-inter)] text-[length:var(--text-fluid-sm)]"
+            className="mt-4 font-inter text-fluid-sm"
             style={{ color: "var(--color-muted)" }}
           >
             Scroll to reveal &mdash; presence follows progress
@@ -100,7 +100,7 @@ export default function TextStrokeSection() {
             ))}
           </div>
           <p
-            className="mt-4 font-[family-name:var(--font-inter)] text-[length:var(--text-fluid-sm)]"
+            className="mt-4 font-inter text-fluid-sm"
             style={{ color: "var(--color-muted)" }}
           >
             {isTouch ? "Tap" : "Hover"} to fill &mdash; interaction shapes form

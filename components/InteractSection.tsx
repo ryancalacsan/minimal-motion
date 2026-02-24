@@ -58,7 +58,7 @@ function DisciplineLink({
         e.preventDefault();
         handleTap();
       }}
-      className="group relative inline-flex w-full select-none items-baseline gap-4 border-b py-4 font-[family-name:var(--font-syne)] text-[length:var(--text-fluid-xl)] font-medium sm:w-fit sm:border-0 sm:py-2"
+      className="group relative inline-flex w-full select-none items-baseline gap-4 border-b py-4 font-syne text-fluid-xl font-medium sm:w-fit sm:border-0 sm:py-2"
       style={{
         color: "var(--color-text)",
         borderColor: "var(--color-border)",
@@ -89,7 +89,7 @@ function DisciplineLink({
       </span>
       {/* Mobile: arrow */}
       <span
-        className="font-[family-name:var(--font-inter)] text-[length:var(--text-fluid-sm)] opacity-30 sm:hidden"
+        className="font-inter text-fluid-sm opacity-30 sm:hidden"
         style={{ color: "var(--color-text)" }}
         aria-hidden="true"
       >
@@ -113,13 +113,13 @@ export default function InteractSection() {
       <div className="mx-auto max-w-5xl">
         {/* Section label */}
         <h2
-          className="font-[family-name:var(--font-inter)] text-[length:var(--text-fluid-xs)] uppercase tracking-[0.3em]"
+          className="font-inter text-fluid-xs uppercase tracking-[0.3em]"
           style={{ color: "var(--color-muted)" }}
         >
           Interact
         </h2>
         <p
-          className="mb-12 mt-4 max-w-md font-[family-name:var(--font-instrument)] text-[length:var(--text-fluid-lg)] italic"
+          className="mb-12 mt-4 max-w-md font-instrument text-fluid-lg italic"
           style={{ color: "var(--color-muted)" }}
         >
           Magnetic pull, cursor morphing, tap feedback &mdash; buttons
@@ -169,12 +169,12 @@ export default function InteractSection() {
                 onMouseLeave={() => !isTouch && resetCursor()}
               >
                 <span
-                  className="mb-2 block font-[family-name:var(--font-inter)] text-[11px] tabular-nums"
+                  className="mb-2 block font-inter text-[11px] tabular-nums"
                   style={{ color: "inherit", opacity: 0.4 }}
                 >
                   {String(i + 1).padStart(2, "0")}
                 </span>
-                <span className="font-[family-name:var(--font-syne)] text-[length:var(--text-fluid-lg)] font-semibold">
+                <span className="font-syne text-fluid-lg font-semibold">
                   {btn.label}
                 </span>
               </motion.button>
@@ -189,7 +189,7 @@ export default function InteractSection() {
           onMouseLeave={() => !isTouch && resetCursor()}
         >
           <p
-            className="max-w-2xl font-[family-name:var(--font-inter)] text-[length:var(--text-fluid-lg)] leading-relaxed"
+            className="max-w-2xl font-inter text-fluid-lg leading-relaxed"
             style={{ color: "var(--color-text)" }}
           >
             Nothing here exists without reason. Each element responds,
@@ -202,13 +202,13 @@ export default function InteractSection() {
         {/* Animated link list */}
         <div ref={linksRef}>
           <span
-            className="mb-2 block font-[family-name:var(--font-inter)] text-[length:var(--text-fluid-xs)] uppercase tracking-[0.3em]"
+            className="mb-2 block font-inter text-fluid-xs uppercase tracking-[0.3em]"
             style={{ color: "var(--color-muted)" }}
           >
             Disciplines
           </span>
           <p
-            className="mb-6 max-w-sm font-[family-name:var(--font-instrument)] text-[length:var(--text-fluid-base)] italic"
+            className="mb-6 max-w-sm font-instrument text-fluid-base italic"
             style={{ color: "var(--color-muted)" }}
           >
             The territories where type, motion, and interaction overlap.

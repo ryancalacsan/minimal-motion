@@ -58,7 +58,7 @@ export default function Footer() {
                 }
               />
               <span
-                className="font-[family-name:var(--font-inter)] text-[length:var(--text-fluid-xs)] uppercase tracking-[0.2em]"
+                className="font-inter text-fluid-xs uppercase tracking-[0.2em]"
                 style={{ color: "var(--color-muted)" }}
               >
                 Top
@@ -71,13 +71,13 @@ export default function Footer() {
           {/* Left: name + attribution + toggle */}
           <div className="flex flex-col gap-4">
             <span
-              className="font-[family-name:var(--font-syne)] text-[length:var(--text-fluid-lg)] font-bold"
+              className="font-syne text-fluid-lg font-bold"
               style={{ color: "var(--color-text)" }}
             >
               Minimal Motion
             </span>
             <p
-              className="font-[family-name:var(--font-instrument)] text-[length:var(--text-fluid-sm)] italic"
+              className="font-instrument text-fluid-sm italic"
               style={{ color: "var(--color-muted)" }}
             >
               Designed &amp; built by Ryan Calacsan
@@ -93,7 +93,7 @@ export default function Footer() {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="footer-social-link font-[family-name:var(--font-inter)] text-[length:var(--text-fluid-sm)] transition-colors duration-300"
+                  className="footer-social-link font-inter text-fluid-sm transition-colors duration-300"
                   style={{ color: "var(--color-muted)" }}
                   onMouseEnter={() => setCursorVariant("link")}
                   onMouseLeave={resetCursor}
@@ -110,7 +110,7 @@ export default function Footer() {
           {TECH_STACK.map((tech, i) => (
             <motion.span
               key={tech}
-              className="tech-pill rounded-full border px-4 py-1.5 font-[family-name:var(--font-inter)] text-[length:var(--text-fluid-xs)] transition-colors duration-300"
+              className="tech-pill rounded-full border px-4 py-1.5 font-inter text-fluid-xs transition-colors duration-300"
               style={{
                 borderColor: "var(--color-border)",
                 color: "var(--color-muted)",
@@ -134,7 +134,7 @@ export default function Footer() {
 
         {/* Copyright */}
         <div
-          className="mt-12 font-[family-name:var(--font-inter)] text-[length:var(--text-fluid-xs)]"
+          className="mt-12 font-inter text-fluid-xs"
           style={{ color: "var(--color-muted)" }}
         >
           &copy; {new Date().getFullYear()} Minimal Motion.

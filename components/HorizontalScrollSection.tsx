@@ -51,25 +51,25 @@ function PanelContent({
     <div className="flex h-full w-screen shrink-0 items-center px-8 md:px-16 lg:px-24">
       <div className="mx-auto max-w-xl">
         <span
-          className="mb-4 block font-[family-name:var(--font-inter)] text-[length:var(--text-fluid-sm)] tracking-[0.2em]"
+          className="mb-4 block font-inter text-fluid-sm tracking-[0.2em]"
           style={{ color: "var(--color-muted)" }}
         >
           {panel.number} / 04
         </span>
         <h3
-          className="mb-6 font-[family-name:var(--font-syne)] text-[length:var(--text-fluid-3xl)] font-bold uppercase leading-[1.1] tracking-tight"
+          className="mb-6 font-syne text-fluid-3xl font-bold uppercase leading-[1.1] tracking-tight"
           style={{ color: "var(--color-text)" }}
         >
           {panel.title}
         </h3>
         <p
-          className="mb-8 max-w-sm font-[family-name:var(--font-inter)] text-[length:var(--text-fluid-base)] leading-relaxed"
+          className="mb-8 max-w-sm font-inter text-fluid-base leading-relaxed"
           style={{ color: "var(--color-muted)" }}
         >
           {panel.description}
         </p>
         <p
-          className="font-[family-name:var(--font-instrument)] text-[length:var(--text-fluid-lg)] italic"
+          className="font-instrument text-fluid-lg italic"
           style={{ color: "var(--color-muted)" }}
         >
           {panel.accent}
@@ -84,7 +84,7 @@ function ReducedMotionFallback() {
     <section id="horizontal" className="px-6 py-24 md:py-32">
       <div className="mx-auto max-w-6xl">
         <p
-          className="mb-12 font-[family-name:var(--font-inter)] text-[length:var(--text-fluid-sm)] uppercase tracking-[0.2em]"
+          className="mb-12 font-inter text-fluid-sm uppercase tracking-[0.2em]"
           style={{ color: "var(--color-muted)" }}
         >
           Principles
@@ -93,25 +93,25 @@ function ReducedMotionFallback() {
           {PANELS.map((panel, i) => (
             <div key={i}>
               <span
-                className="mb-2 block font-[family-name:var(--font-inter)] text-[length:var(--text-fluid-sm)] tracking-[0.2em]"
+                className="mb-2 block font-inter text-fluid-sm tracking-[0.2em]"
                 style={{ color: "var(--color-muted)" }}
               >
                 {panel.number}
               </span>
               <h3
-                className="mb-3 font-[family-name:var(--font-syne)] text-[length:var(--text-fluid-2xl)] font-bold uppercase leading-[1.1] tracking-tight"
+                className="mb-3 font-syne text-fluid-2xl font-bold uppercase leading-[1.1] tracking-tight"
                 style={{ color: "var(--color-text)" }}
               >
                 {panel.title}
               </h3>
               <p
-                className="mb-4 font-[family-name:var(--font-inter)] text-[length:var(--text-fluid-base)] leading-relaxed"
+                className="mb-4 font-inter text-fluid-base leading-relaxed"
                 style={{ color: "var(--color-muted)" }}
               >
                 {panel.description}
               </p>
               <p
-                className="font-[family-name:var(--font-instrument)] text-[length:var(--text-fluid-lg)] italic"
+                className="font-instrument text-fluid-lg italic"
                 style={{ color: "var(--color-muted)" }}
               >
                 {panel.accent}
@@ -147,7 +147,7 @@ export default function HorizontalScrollSection() {
         {/* Label + scroll hint */}
         <div className="absolute top-8 left-8 z-10 flex items-center gap-6 md:left-16">
           <p
-            className="font-[family-name:var(--font-inter)] text-[length:var(--text-fluid-sm)] uppercase tracking-[0.2em]"
+            className="font-inter text-fluid-sm uppercase tracking-[0.2em]"
             style={{ color: "var(--color-muted)" }}
           >
             Principles
@@ -164,7 +164,7 @@ export default function HorizontalScrollSection() {
               }}
             />
             <span
-              className="font-[family-name:var(--font-inter)] text-[10px] uppercase tracking-[0.2em]"
+              className="font-inter text-[10px] uppercase tracking-[0.2em]"
               style={{ color: "var(--color-muted)" }}
             >
               Scroll
