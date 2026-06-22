@@ -12,6 +12,7 @@ function HoverWord({ word, isTouch }: { word: string; isTouch: boolean }) {
 
   return (
     <button
+      type="button"
       className={`cursor-pointer font-sora text-fluid-3xl font-bold uppercase leading-[1.1] tracking-tight transition-all duration-500 ${
         active ? "text-stroke-filled" : "text-stroke-outline"
       }`}

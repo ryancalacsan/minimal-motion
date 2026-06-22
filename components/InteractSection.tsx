@@ -130,6 +130,7 @@ export default function InteractSection() {
           {BUTTONS.map((btn, i) => (
             <MagneticElement key={btn.label} strength={0.2}>
               <motion.button
+                type="button"
                 className="group relative w-full select-none overflow-hidden rounded-lg border px-6 py-8 text-left"
                 style={{
                   borderColor: "var(--color-border)",

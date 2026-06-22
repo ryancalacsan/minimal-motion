@@ -37,6 +37,7 @@ export default function Footer() {
         <div className="mb-16 flex justify-center">
           <MagneticElement strength={0.15}>
             <button
+              type="button"
               onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
               className="flex flex-col items-center gap-2"
               onMouseEnter={() => setCursorVariant("link")}

@@ -31,6 +31,7 @@ export default function ThemeToggle({ size = "default" }: ThemeToggleProps) {
 
   return (
     <button
+      type="button"
       role="switch"
       aria-checked={isDark}
       aria-label={`Switch to ${isDark ? "light" : "dark"} mode`}

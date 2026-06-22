@@ -26,15 +26,18 @@ export default function ScrollNav() {
   useEffect(() => {
     if (isTouch) return;
 
-    const handleScroll = () => {
-      const scrollY = window.scrollY;
+    // Cache section nodes once; the page is static so all sections are mounted
+    const sections = SECTIONS.map((s) => document.getElementById(s.id));
+    let frame = 0;
+
+    const update = () => {
+      frame = 0;
       const windowHeight = window.innerHeight;
 
       // Show after scrolling past hero
-      setVisible(scrollY > windowHeight * 0.5);
+      setVisible(window.scrollY > windowHeight * 0.5);
 
       // Find active section
-      const sections = SECTIONS.map((s) => document.getElementById(s.id));
       for (let i = sections.length - 1; i >= 0; i--) {
         const section = sections[i];
         if (section) {
@@ -47,8 +50,18 @@ export default function ScrollNav() {
       }
     };
 
+    // Throttle to one layout read per frame
+    const handleScroll = () => {
+      if (frame) return;
+      frame = requestAnimationFrame(update);
+    };
+
+    update(); // sync state on mount
     window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      if (frame) cancelAnimationFrame(frame);
+    };
   }, [isTouch]);
 
   if (isTouch || prefersReduced) return null;
@@ -65,6 +78,7 @@ export default function ScrollNav() {
         {SECTIONS.map((section, i) => (
           <button
             key={section.id}
+            type="button"
             onClick={() => {
               const el = document.getElementById(section.id);
               if (el) el.scrollIntoView({ behavior: "smooth" });

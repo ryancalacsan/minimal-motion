@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import {
   motion,
   useScroll,
@@ -53,19 +53,37 @@ export default function TypeInMotion() {
     { damping: 30, stiffness: 80 }
   );
 
-  const handleHoverMove = (e: React.MouseEvent<HTMLDivElement>) => {
+  // Coalesce pointer moves to one layout read per frame
+  const pointerX = useRef(0);
+  const frame = useRef(0);
+
+  const applyPointer = () => {
+    frame.current = 0;
     if (!hoverRef.current) return;
     const rect = hoverRef.current.getBoundingClientRect();
-    const normalized = (e.clientX - rect.left) / rect.width;
+    const normalized = (pointerX.current - rect.left) / rect.width;
     mouseX.set(Math.max(0, Math.min(1, normalized)));
   };
 
-  const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
-    if (!hoverRef.current || !e.touches[0]) return;
-    const rect = hoverRef.current.getBoundingClientRect();
-    const normalized = (e.touches[0].clientX - rect.left) / rect.width;
-    mouseX.set(Math.max(0, Math.min(1, normalized)));
+  const schedulePointer = (clientX: number) => {
+    pointerX.current = clientX;
+    if (frame.current) return;
+    frame.current = requestAnimationFrame(applyPointer);
   };
+
+  const handleHoverMove = (e: React.MouseEvent<HTMLDivElement>) =>
+    schedulePointer(e.clientX);
+
+  const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
+    if (e.touches[0]) schedulePointer(e.touches[0].clientX);
+  };
+
+  useEffect(
+    () => () => {
+      if (frame.current) cancelAnimationFrame(frame.current);
+    },
+    []
+  );
 
   return (
     <section id="type-in-motion" ref={sectionRef} className="relative min-h-[150vh] py-20 sm:min-h-[200vh] sm:py-32">
