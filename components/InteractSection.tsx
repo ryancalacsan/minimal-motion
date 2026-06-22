@@ -71,7 +71,7 @@ function DisciplineLink({
     >
       <span
         className="text-[11px] tabular-nums"
-        style={{ color: "var(--color-border)" }}
+        style={{ color: "var(--color-muted)" }}
       >
         {String(index + 1).padStart(2, "0")}
       </span>

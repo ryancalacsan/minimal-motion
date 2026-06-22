@@ -26,7 +26,7 @@ export default function RevealSection() {
           <div className="mb-4 flex items-baseline gap-4">
             <span
               className="font-sora text-fluid-xs font-semibold tabular-nums"
-              style={{ color: "var(--color-border)" }}
+              style={{ color: "var(--color-muted)" }}
             >
               01
             </span>
@@ -50,7 +50,7 @@ export default function RevealSection() {
           <div className="mb-4 flex items-baseline justify-center gap-4">
             <span
               className="font-sora text-fluid-xs font-semibold tabular-nums"
-              style={{ color: "var(--color-border)" }}
+              style={{ color: "var(--color-muted)" }}
             >
               02
             </span>
@@ -73,7 +73,7 @@ export default function RevealSection() {
           <div className="mb-4 flex items-baseline gap-4 sm:justify-end">
             <span
               className="font-sora text-fluid-xs font-semibold tabular-nums"
-              style={{ color: "var(--color-border)" }}
+              style={{ color: "var(--color-muted)" }}
             >
               03
             </span>
@@ -96,7 +96,7 @@ export default function RevealSection() {
           <div className="mb-4 flex items-baseline gap-4">
             <span
               className="font-sora text-fluid-xs font-semibold tabular-nums"
-              style={{ color: "var(--color-border)" }}
+              style={{ color: "var(--color-muted)" }}
             >
               04
             </span>

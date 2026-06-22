@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { ThemeProvider } from "next-themes";
 import { sora, inter, instrumentSerif } from "@/lib/fonts";
 import { CursorProvider } from "@/context/CursorContext";
@@ -44,6 +44,39 @@ export const metadata: Metadata = {
   },
 };
 
+export const viewport: Viewport = {
+  colorScheme: "dark light",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#f5f5f0" },
+    { media: "(prefers-color-scheme: dark)", color: "#0a0a0a" },
+  ],
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      name: "Ryan Calacsan",
+      url: "https://minimal-motion-gray.vercel.app",
+      jobTitle: "Frontend Developer",
+      sameAs: [
+        "https://github.com/ryancalacsan",
+        "https://x.com/ryancalacsan",
+        "https://linkedin.com/in/ryancalacsan",
+      ],
+    },
+    {
+      "@type": "WebSite",
+      name: "Minimal Motion",
+      url: "https://minimal-motion-gray.vercel.app",
+      description:
+        "A typography-focused portfolio showcase demonstrating restraint, CSS mastery, and sophisticated micro-interactions.",
+      author: { "@type": "Person", name: "Ryan Calacsan" },
+    },
+  ],
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -56,6 +89,10 @@ export default function RootLayout({
       className={`${sora.variable} ${inter.variable} ${instrumentSerif.variable}`}
     >
       <body>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
           <CursorProvider>
             <NoiseOverlay />

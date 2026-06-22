@@ -67,7 +67,7 @@ export default function TextReveal({
   if (mode === "line") {
     const lines = text.split("\n");
     return (
-      <div ref={ref} aria-label={text} className={className} aria-hidden={ariaHidden}>
+      <div ref={ref} role="img" aria-label={text} className={className} aria-hidden={ariaHidden}>
         {lines.map((line, i) => (
           <div
             key={i}
@@ -95,6 +95,7 @@ export default function TextReveal({
     return (
       <div
         ref={ref}
+        role="img"
         aria-label={text}
         className={className}
         aria-hidden={ariaHidden}
@@ -131,7 +132,7 @@ export default function TextReveal({
   // Default: word mode
   const words = text.split(" ");
   return (
-    <div ref={ref} aria-label={text} className={className} aria-hidden={ariaHidden}>
+    <div ref={ref} role="img" aria-label={text} className={className} aria-hidden={ariaHidden}>
       {words.map((word, i) => (
         <span
           key={i}
