@@ -40,13 +40,7 @@ const PANELS = [
   },
 ];
 
-function PanelContent({
-  panel,
-  index,
-}: {
-  panel: (typeof PANELS)[number];
-  index: number;
-}) {
+function PanelContent({ panel }: { panel: (typeof PANELS)[number] }) {
   return (
     <div className="flex h-full w-screen shrink-0 items-center px-8 md:px-16 lg:px-24">
       <div className="mx-auto max-w-xl">
@@ -178,7 +172,7 @@ export default function HorizontalScrollSection() {
           style={{ x, skewY }}
         >
           {PANELS.map((panel, i) => (
-            <PanelContent key={i} panel={panel} index={i} />
+            <PanelContent key={i} panel={panel} />
           ))}
         </motion.div>
 
