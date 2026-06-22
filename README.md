@@ -28,11 +28,14 @@ A typography-focused, single-page portfolio showcase demonstrating restraint, CS
 - **Horizontal scroll section** — Sticky 4-panel horizontal scroll with scroll-driven transform and progress indicator
 - **Abstract visuals** — SVG geometric shapes that draw on scroll via `pathLength` animation
 - **Scroll progress bar** — Fixed 2px bar at top of viewport tracking document scroll
+- **Section dot navigation** — Fixed vertical dot nav (desktop) that highlights the active section as you scroll, with `requestAnimationFrame`-throttled scroll tracking
 - **Noise grain overlay** — Subtle SVG feTurbulence texture for visual depth
 - **Page preloader** — Animated "M" lettermark reveal with session-aware replay prevention
 - **Scroll-velocity skew** — Shared hook that tilts elements based on scroll speed for a dynamic feel
 - **Mobile-optimized interactions** — Touch-aware tap animations, color-inverting button presses, fire-and-forget discipline link animations, responsive marquee speed
-- **Accessible by default** — Reduced motion support, touch device detection, keyboard navigation, WCAG AA color contrast, semantic heading hierarchy
+- **Accessible by default** — Reduced motion support, touch device detection, keyboard navigation with a skip-to-content link and visible focus states, `role="img"` labelling so screen readers announce full phrases from split-text animations, WCAG AA color contrast, and semantic heading hierarchy (Lighthouse accessibility 96)
+- **SEO & social-ready** — Dynamic OpenGraph image, `Person` + `WebSite` JSON-LD structured data, sitemap and robots routes, adaptive `theme-color`, and an Apple touch icon (Lighthouse SEO & Best Practices 100)
+- **Performance-minded** — Fully static prerendering, `requestAnimationFrame`-throttled scroll and pointer handlers, and lean client bundle
 
 ## Getting Started
 
@@ -48,8 +51,13 @@ Open [http://localhost:3000](http://localhost:3000) to view the site.
 ```
 app/
   globals.css              # Tailwind v4 @theme config, design tokens, color variables
-  layout.tsx               # Root layout with fonts, theme provider, cursor, overlays
+  layout.tsx               # Root layout with fonts, theme provider, cursor, overlays, metadata, JSON-LD
   page.tsx                 # Single-page composition
+  opengraph-image.tsx      # Dynamically generated social share image
+  apple-icon.tsx           # Generated iOS home-screen icon
+  icon.svg                 # Favicon / lettermark
+  robots.ts                # robots.txt route
+  sitemap.ts               # sitemap.xml route
 components/
   Hero.tsx                 # 3D staggered letter animation with scroll parallax
   TypeInMotion.tsx         # Scroll-driven variable font weight demo
