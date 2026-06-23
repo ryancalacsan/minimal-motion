@@ -124,9 +124,14 @@ html.lenis body {
 }
 
 /* ─── Text Stroke (multi-shadow outline — avoids internal glyph artifacts) ─── */
-.text-stroke-outline,
-.text-stroke-filled {
+/* Only the hollow outline needs the stroke shadow; the filled layer sits on top
+   and is solid, and the outline beneath already supplies the glyph perimeter.
+   Keeping the same-color stroke on the filled layer added nothing visually but
+   made axe read the light stroke as the text's own background (light-on-light),
+   failing WCAG contrast — so it's scoped to the outline only. */
+.text-stroke-outline {
   --_stroke: var(--color-text);
+  color: var(--color-bg);
   text-shadow:
     0 -1px 0 var(--_stroke),
     0 1px 0 var(--_stroke),
@@ -136,10 +141,6 @@ html.lenis body {
     0.7px -0.7px 0 var(--_stroke),
     -0.7px 0.7px 0 var(--_stroke),
     0.7px 0.7px 0 var(--_stroke);
-}
-
-.text-stroke-outline {
-  color: var(--color-bg);
 }
 
 .text-stroke-filled {

@@ -165,7 +165,11 @@ export default function InteractSection() {
               >
                 <span
                   className="mb-2 block font-inter text-[11px] tabular-nums"
-                  style={{ color: "inherit", opacity: 0.4 }}
+                  // inherit (not a fixed color) so the numeral participates in
+                  // the button's whileTap colour inversion; opacity raised from
+                  // 0.4 → 0.65 so the resting state clears AA in both themes
+                  // (~#a0a0a0 on dark, ~#676767 on light).
+                  style={{ color: "inherit", opacity: 0.65 }}
                 >
                   {String(i + 1).padStart(2, "0")}
                 </span>

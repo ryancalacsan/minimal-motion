@@ -68,7 +68,11 @@ export default function TextStrokeSection() {
 
         {/* Demo 1: Scroll-to-fill */}
         <div ref={fillRef} className="mb-20 md:mb-28">
-          <div className="relative inline-block">
+          {/* Decorative typographic art: the outline + clipped fill render the
+              same word twice purely for the visual reveal, so the pair is
+              exposed to assistive tech as a single labelled graphic rather than
+              overlapping text (the overlap fails text-contrast heuristics). */}
+          <div className="relative inline-block" role="img" aria-label="Contrast">
             <span
               className="text-stroke-outline font-sora text-fluid-hero font-bold uppercase leading-none tracking-tight select-none"
               aria-hidden="true"
