@@ -89,7 +89,7 @@ export default function CTASection() {
         </motion.div>
 
         <motion.a
-          href="https://ryancalacsan.com"
+          href="https://ryancalacsan.dev"
           target="_blank"
           rel="noopener noreferrer"
           className="mt-6 font-inter text-fluid-sm transition-colors duration-300"
@@ -104,7 +104,7 @@ export default function CTASection() {
           onMouseEnter={() => setCursorVariant("link")}
           onMouseLeave={resetCursor}
         >
-          ryancalacsan.com &rarr;
+          ryancalacsan.dev &rarr;
         </motion.a>
       </div>
     </section>
